@@ -133,19 +133,39 @@ export const ChatPane = () => {
 
       {/* Input Area */}
       <div className="p-5 border-t border-border/30 bg-card/30 backdrop-blur-xl">
-        {/* Tools Bar */}
-        <div className="flex items-center justify-between mb-3 pb-3 border-b border-border/20">
-          <div className="flex items-center gap-1">
-            <TooltipProvider>
+        {/* Compact Input with Inline Tools */}
+        <div className="relative flex items-end gap-2">
+          <Textarea
+            value={input}
+            onChange={(e) => {
+              setInput(e.target.value);
+              // Auto-resize
+              e.target.style.height = 'auto';
+              e.target.style.height = e.target.scrollHeight + 'px';
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                handleSend();
+              }
+            }}
+            placeholder="Describe your app or feature..."
+            rows={1}
+            className="flex-1 resize-none bg-secondary/50 border-border/50 focus:border-primary/50 rounded-xl py-3 px-4 placeholder:text-muted-foreground/50 max-h-[200px] overflow-y-auto"
+            style={{ height: 'auto' }}
+          />
+          
+          <TooltipProvider>
+            <div className="flex items-center gap-1 pb-1">
               {/* Attach Button */}
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="h-9 w-9 p-0 glass-button rounded-lg hover:bg-primary/10 hover:border-primary/30"
+                    className="h-9 w-9 p-0 hover:bg-primary/10 rounded-lg transition-all"
                   >
-                    <Paperclip className="w-4 h-4" />
+                    <Paperclip className="w-4 h-4 text-muted-foreground hover:text-foreground" />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>
@@ -161,11 +181,11 @@ export const ChatPane = () => {
                     size="sm"
                     onClick={() => setIsRecording(!isRecording)}
                     className={cn(
-                      "h-9 w-9 p-0 glass-button rounded-lg hover:bg-primary/10 hover:border-primary/30",
-                      isRecording && "bg-destructive/20 border-destructive/30 hover:bg-destructive/30"
+                      "h-9 w-9 p-0 hover:bg-primary/10 rounded-lg transition-all",
+                      isRecording && "bg-destructive/20"
                     )}
                   >
-                    <Mic className={cn("w-4 h-4", isRecording && "text-destructive")} />
+                    <Mic className={cn("w-4 h-4 text-muted-foreground", isRecording && "text-destructive")} />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>
@@ -179,9 +199,9 @@ export const ChatPane = () => {
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="h-9 w-9 p-0 glass-button rounded-lg hover:bg-primary/10 hover:border-primary/30"
+                    className="h-9 w-9 p-0 hover:bg-primary/10 rounded-lg transition-all"
                   >
-                    <Edit3 className="w-4 h-4" />
+                    <Edit3 className="w-4 h-4 text-muted-foreground hover:text-foreground" />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>
@@ -197,31 +217,44 @@ export const ChatPane = () => {
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="h-9 w-9 p-0 glass-button rounded-lg hover:bg-primary/10 hover:border-primary/30"
+                        className="h-9 w-9 p-0 hover:bg-primary/10 rounded-lg transition-all"
                       >
-                        <Plus className="w-4 h-4" />
+                        <Plus className="w-4 h-4 text-muted-foreground hover:text-foreground" />
                       </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent align="start" className="w-56 glass-panel border-border/50">
-                      <DropdownMenuItem className="gap-3 cursor-pointer hover:bg-primary/10">
+                    <DropdownMenuContent align="end" className="w-56 bg-card/95 backdrop-blur-xl border-border/50 z-50">
+                      <DropdownMenuItem className="gap-3 cursor-pointer hover:bg-primary/10 focus:bg-primary/10">
                         <Code className="w-4 h-4 text-primary" />
                         <div>
                           <div className="font-medium text-sm">Code Snippet</div>
                           <div className="text-xs text-muted-foreground">Insert code block</div>
                         </div>
                       </DropdownMenuItem>
-                      <DropdownMenuItem className="gap-3 cursor-pointer hover:bg-primary/10">
+                      <DropdownMenuItem className="gap-3 cursor-pointer hover:bg-primary/10 focus:bg-primary/10">
                         <Image className="w-4 h-4 text-primary" />
                         <div>
                           <div className="font-medium text-sm">Generate Image</div>
                           <div className="text-xs text-muted-foreground">AI image generation</div>
                         </div>
                       </DropdownMenuItem>
-                      <DropdownMenuItem className="gap-3 cursor-pointer hover:bg-primary/10">
+                      <DropdownMenuItem className="gap-3 cursor-pointer hover:bg-primary/10 focus:bg-primary/10">
                         <FileText className="w-4 h-4 text-primary" />
                         <div>
                           <div className="font-medium text-sm">Documentation</div>
                           <div className="text-xs text-muted-foreground">Generate docs</div>
+                        </div>
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator className="bg-border/50" />
+                      <DropdownMenuItem 
+                        className="gap-3 cursor-pointer hover:bg-primary/10 focus:bg-primary/10"
+                        onClick={() => setProjectManagerEnabled(!projectManagerEnabled)}
+                      >
+                        <Bot className={cn("w-4 h-4", projectManagerEnabled ? "text-primary" : "text-muted-foreground")} />
+                        <div>
+                          <div className="font-medium text-sm">Project Manager</div>
+                          <div className="text-xs text-muted-foreground">
+                            {projectManagerEnabled ? "Active" : "Inactive"}
+                          </div>
                         </div>
                       </DropdownMenuItem>
                     </DropdownMenuContent>
@@ -231,77 +264,40 @@ export const ChatPane = () => {
                   <p>More tools</p>
                 </TooltipContent>
               </Tooltip>
-            </TooltipProvider>
-          </div>
 
-          {/* AI Project Manager Toggle */}
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setProjectManagerEnabled(!projectManagerEnabled)}
-                  className={cn(
-                    "h-9 px-3 gap-2 glass-button rounded-lg text-xs font-medium transition-all",
-                    projectManagerEnabled
-                      ? "bg-primary/20 border-primary/30 text-primary hover:bg-primary/30"
-                      : "hover:bg-primary/10 hover:border-primary/30"
-                  )}
-                >
-                  <Bot className="w-4 h-4" />
-                  <span>Project Manager</span>
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>{projectManagerEnabled ? "Disable" : "Enable"} AI Project Manager</p>
-              </TooltipContent>
-            </Tooltip>
+              {/* Send Button */}
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    onClick={handleSend}
+                    disabled={!input.trim() || isProcessing}
+                    size="sm"
+                    className="h-9 w-9 p-0 bg-gradient-to-r from-primary to-purple hover:opacity-90 disabled:opacity-50 text-primary-foreground shadow-lg shadow-primary/20 rounded-lg transition-all"
+                  >
+                    <Send className="w-4 h-4" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Send message (⌘↵)</p>
+                </TooltipContent>
+              </Tooltip>
+            </div>
           </TooltipProvider>
         </div>
 
-        {/* Input Field */}
-        <div className="relative">
-          <Textarea
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && !e.shiftKey) {
-                e.preventDefault();
-                handleSend();
-              }
-            }}
-            placeholder="Describe your app or feature..."
-            className="min-h-[100px] resize-none bg-secondary/50 border-border/50 focus:border-primary/50 rounded-xl pr-12 placeholder:text-muted-foreground/50"
-          />
-          <Button
-            onClick={handleSend}
-            disabled={!input.trim() || isProcessing}
-            size="sm"
-            className="absolute bottom-3 right-3 bg-gradient-to-r from-primary to-purple hover:opacity-90 text-primary-foreground shadow-lg shadow-primary/20 rounded-lg"
-          >
-            <Send className="w-4 h-4" />
-          </Button>
-        </div>
-
-        {/* Status Bar */}
+        {/* Minimal Status */}
         <div className="flex items-center justify-between mt-3 px-1">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 text-xs text-muted-foreground/70">
-              <Sparkles className="w-3.5 h-3.5 text-primary" />
-              <span>Powered by multi-agent orchestration</span>
-            </div>
+          <div className="flex items-center gap-2 text-xs text-muted-foreground/50">
             {projectManagerEnabled && (
-              <>
+              <div className="flex items-center gap-1.5">
+                <Bot className="w-3 h-3 text-primary" />
+                <span className="text-primary">PM</span>
                 <span className="text-muted-foreground/30">•</span>
-                <div className="flex items-center gap-1.5 text-xs">
-                  <Bot className="w-3.5 h-3.5 text-primary" />
-                  <span className="text-primary font-medium">PM Active</span>
-                </div>
-              </>
+              </div>
             )}
+            <Sparkles className="w-3 h-3 text-primary/70" />
+            <span>AI Orchestration</span>
           </div>
-          <span className="text-xs text-muted-foreground/50">⌘ + Enter to send</span>
         </div>
       </div>
     </div>
