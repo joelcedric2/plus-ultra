@@ -64,20 +64,20 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
       </div>
 
       {/* View Mode Toggle */}
-      <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-3">
-        <div className="flex items-center gap-1">
+      <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-1">
+        <div className="flex items-center gap-0.5">
           <Button
             variant="ghost"
             size="sm"
             onClick={() => setViewMode("preview")}
             className={cn(
-              "gap-2 rounded-lg transition-all duration-200",
+              "gap-1.5 rounded-lg transition-all duration-200 h-8 px-2.5 text-xs",
               viewMode === "preview" 
                 ? "bg-muted shadow-sm border border-border" 
                 : "hover:bg-muted/50"
             )}
           >
-            <Eye className="w-4 h-4" />
+            <Eye className="w-3.5 h-3.5" />
             {viewMode === "preview" && <span className="font-medium">Preview</span>}
           </Button>
           <Button
@@ -85,16 +85,15 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
             size="sm"
             onClick={() => setViewMode("code")}
             className={cn(
-              "gap-2 rounded-lg transition-all duration-200",
+              "gap-1.5 rounded-lg transition-all duration-200 h-8 px-2.5 text-xs",
               viewMode === "code" 
                 ? "bg-muted shadow-sm border border-border" 
                 : "hover:bg-muted/50"
             )}
           >
-            <Code2 className="w-4 h-4" />
+            <Code2 className="w-3.5 h-3.5" />
             {viewMode === "code" && <span className="font-medium">Code</span>}
           </Button>
-        </div>
 
         <Dialog open={isCloudDialogOpen} onOpenChange={setIsCloudDialogOpen}>
           <DialogTrigger asChild>
@@ -102,10 +101,10 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
               variant="ghost"
               size="sm"
               className={cn(
-                "gap-2 rounded-lg transition-all duration-200 hover:bg-muted/50"
+                "gap-1.5 rounded-lg transition-all duration-200 hover:bg-muted/50 h-8 w-8 p-0"
               )}
             >
-              <Cloud className="w-4 h-4" />
+              <Cloud className="w-3.5 h-3.5" />
             </Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-[525px]">
@@ -158,48 +157,49 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
             </div>
           </DialogContent>
         </Dialog>
+        </div>
 
         {/* Device Mode Selector - Only show in preview mode */}
         {viewMode === "preview" && (
-          <div className="flex items-center gap-1 bg-secondary border border-border rounded-xl p-1">
+          <div className="flex items-center gap-0.5 bg-secondary border border-border rounded-xl p-0.5 ml-2">
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setDeviceMode("mobile")}
               className={cn(
-                "p-2 rounded-lg transition-all duration-200",
+                "p-1.5 rounded-lg transition-all duration-200",
                 deviceMode === "mobile" 
                   ? "bg-card shadow-sm border border-border" 
                   : "hover:bg-card/50"
               )}
             >
-              <Smartphone className="w-4 h-4" />
+              <Smartphone className="w-3.5 h-3.5" />
             </Button>
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setDeviceMode("tablet")}
               className={cn(
-                "p-2 rounded-lg transition-all duration-200",
+                "p-1.5 rounded-lg transition-all duration-200",
                 deviceMode === "tablet" 
                   ? "bg-card shadow-sm border border-border" 
                   : "hover:bg-card/50"
               )}
             >
-              <Tablet className="w-4 h-4" />
+              <Tablet className="w-3.5 h-3.5" />
             </Button>
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setDeviceMode("desktop")}
               className={cn(
-                "p-2 rounded-lg transition-all duration-200",
+                "p-1.5 rounded-lg transition-all duration-200",
                 deviceMode === "desktop" 
                   ? "bg-card shadow-sm border border-border" 
                   : "hover:bg-card/50"
               )}
             >
-              <Monitor className="w-4 h-4" />
+              <Monitor className="w-3.5 h-3.5" />
             </Button>
           </div>
         )}
