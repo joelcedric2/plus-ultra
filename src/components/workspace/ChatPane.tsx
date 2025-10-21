@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { ArrowUp, Sparkles, Loader2, Paperclip, Mic, Edit3, Plus, Bot, Code, Image, FileText, RotateCcw } from "lucide-react";
+import { ArrowUp, Sparkles, Loader2, Paperclip, Mic, Edit3, Plus, Bot, Code, Image, FileText, RotateCcw, ChevronLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   DropdownMenu,
@@ -21,7 +21,12 @@ interface Message {
   hasCodeModification?: boolean;
 }
 
-export const ChatPane = () => {
+interface ChatPaneProps {
+  onToggleCollapse: () => void;
+  isCollapsed: boolean;
+}
+
+export const ChatPane = ({ onToggleCollapse }: ChatPaneProps) => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
@@ -80,6 +85,23 @@ export const ChatPane = () => {
               <p className="text-xs text-muted-foreground">Multi-agent orchestration active</p>
             </div>
           </div>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={onToggleCollapse}
+                  className="h-8 w-8 p-0 hover:bg-primary/10 rounded-lg transition-all"
+                >
+                  <ChevronLeft className="w-4 h-4 text-muted-foreground hover:text-foreground" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Collapse chat pane</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </div>
       </div>
 
