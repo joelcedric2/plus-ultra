@@ -85,26 +85,6 @@ export const ChatPane = ({ onToggleCollapse, isCollapsed }: ChatPaneProps) => {
               <p className="text-xs text-muted-foreground">Multi-agent orchestration active</p>
             </div>
           </div>
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={onToggleCollapse}
-                  className="h-8 w-8 p-0 hover:bg-primary/10 rounded-lg transition-all"
-                >
-                  <PanelLeftClose className={cn(
-                    "w-4 h-4 text-muted-foreground hover:text-foreground transition-transform",
-                    isCollapsed && "rotate-180"
-                  )} />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>{isCollapsed ? "Expand" : "Collapse"} chat pane</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
         </div>
       </div>
 

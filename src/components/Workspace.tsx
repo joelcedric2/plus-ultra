@@ -25,7 +25,12 @@ export const Workspace = () => {
 
   return (
     <div className="h-screen w-full flex flex-col bg-background">
-      <Header viewMode={viewMode} setViewMode={setViewMode} />
+      <Header 
+        viewMode={viewMode} 
+        setViewMode={setViewMode}
+        onToggleChat={handleToggleChat}
+        isChatCollapsed={isChatCollapsed}
+      />
       
       <div className="flex-1 overflow-hidden">
         <PanelGroup direction="horizontal">

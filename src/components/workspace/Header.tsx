@@ -1,4 +1,4 @@
-import { Code2, Eye, Github, Share2, Sparkles, Cloud } from "lucide-react";
+import { Code2, Eye, Github, Share2, Sparkles, Cloud, PanelLeftClose } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ViewMode } from "../Workspace";
 import { cn } from "@/lib/utils";
@@ -19,9 +19,11 @@ type ExtendedViewMode = ViewMode | "cloud";
 interface HeaderProps {
   viewMode: ViewMode;
   setViewMode: (mode: ViewMode) => void;
+  onToggleChat: () => void;
+  isChatCollapsed: boolean;
 }
 
-export const Header = ({ viewMode, setViewMode }: HeaderProps) => {
+export const Header = ({ viewMode, setViewMode, onToggleChat, isChatCollapsed }: HeaderProps) => {
   const [supabaseUrl, setSupabaseUrl] = useState("");
   const [supabaseKey, setSupabaseKey] = useState("");
   const [isCloudDialogOpen, setIsCloudDialogOpen] = useState(false);
@@ -36,6 +38,17 @@ export const Header = ({ viewMode, setViewMode }: HeaderProps) => {
     <header className="h-16 glass-panel flex items-center justify-between px-6 relative z-10">
       {/* Logo and Project Name */}
         <div className="flex items-center gap-4">
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={onToggleChat}
+          className="h-8 w-8 p-0 hover:bg-primary/10 rounded-lg transition-all"
+        >
+          <PanelLeftClose className={cn(
+            "w-4 h-4 text-muted-foreground hover:text-foreground transition-transform",
+            isChatCollapsed && "rotate-180"
+          )} />
+        </Button>
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-xl bg-primary/10 border border-border flex items-center justify-center">
             <Sparkles className="w-5 h-5 text-primary" />
