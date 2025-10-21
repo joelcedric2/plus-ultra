@@ -2,6 +2,17 @@ import { Code2, Eye, Github, Share2, Sparkles, Cloud } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ViewMode } from "../Workspace";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 type ExtendedViewMode = ViewMode | "cloud";
 
@@ -11,6 +22,16 @@ interface HeaderProps {
 }
 
 export const Header = ({ viewMode, setViewMode }: HeaderProps) => {
+  const [supabaseUrl, setSupabaseUrl] = useState("");
+  const [supabaseKey, setSupabaseKey] = useState("");
+  const [isCloudDialogOpen, setIsCloudDialogOpen] = useState(false);
+
+  const handleConnectSupabase = () => {
+    // Handle Supabase connection here
+    console.log("Connecting to Supabase:", { supabaseUrl, supabaseKey });
+    setIsCloudDialogOpen(false);
+  };
+
   return (
     <header className="h-16 border-b border-border/50 glass-panel flex items-center justify-between px-6 relative z-10">
       {/* Logo and Project Name */}
@@ -57,15 +78,68 @@ export const Header = ({ viewMode, setViewMode }: HeaderProps) => {
           <Code2 className="w-4 h-4" />
           {viewMode === "code" && <span className="font-medium">Code</span>}
         </Button>
-        <Button
-          variant="ghost"
-          size="sm"
-          className={cn(
-            "gap-2 rounded-lg transition-all duration-200 hover:bg-muted/50"
-          )}
-        >
-          <Cloud className="w-4 h-4" />
-        </Button>
+        <Dialog open={isCloudDialogOpen} onOpenChange={setIsCloudDialogOpen}>
+          <DialogTrigger asChild>
+            <Button
+              variant="ghost"
+              size="sm"
+              className={cn(
+                "gap-2 rounded-lg transition-all duration-200 hover:bg-muted/50"
+              )}
+            >
+              <Cloud className="w-4 h-4" />
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[525px]">
+            <DialogHeader>
+              <DialogTitle>Connect to Supabase</DialogTitle>
+              <DialogDescription>
+                Sync your Supabase project with PlusUltra. You'll need your project's API key and URL.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="space-y-4 py-4">
+              <div className="space-y-2">
+                <Label htmlFor="supabase-url">Supabase Project URL</Label>
+                <Input
+                  id="supabase-url"
+                  placeholder="https://your-project.supabase.co"
+                  value={supabaseUrl}
+                  onChange={(e) => setSupabaseUrl(e.target.value)}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="supabase-key">Supabase Anon Key</Label>
+                <Input
+                  id="supabase-key"
+                  type="password"
+                  placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                  value={supabaseKey}
+                  onChange={(e) => setSupabaseKey(e.target.value)}
+                />
+              </div>
+              <div className="rounded-lg border border-border p-4 bg-muted/30">
+                <p className="text-sm text-muted-foreground mb-2">
+                  Find your credentials in your Supabase project settings:
+                </p>
+                <a
+                  href="https://supabase.com/dashboard/project/_/settings/api"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-primary hover:underline"
+                >
+                  Open Supabase Dashboard →
+                </a>
+              </div>
+              <Button
+                onClick={handleConnectSupabase}
+                className="w-full bg-gradient-to-r from-accent to-purple hover:opacity-90 text-accent-foreground shadow-lg shadow-accent/20"
+                disabled={!supabaseUrl || !supabaseKey}
+              >
+                Connect Project
+              </Button>
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
 
       {/* Actions */}
