@@ -28,7 +28,7 @@ export const Header = ({ viewMode, setViewMode }: HeaderProps) => {
       </div>
 
       {/* View Mode Toggle */}
-      <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-1 bg-secondary border border-border rounded-xl p-1">
+      <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-1">
         <Button
           variant="ghost"
           size="sm"
