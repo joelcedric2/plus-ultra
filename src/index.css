@@ -82,7 +82,7 @@ All colors MUST be HSL.
   }
 
   .glass-button {
-    @apply bg-card/60 backdrop-blur-lg border border-border/50 hover:border-primary/30 hover:bg-card transition-all duration-300;
+    @apply bg-card/60 backdrop-blur-lg border border-border/50 hover:border-muted-foreground/30 hover:bg-muted/50 transition-all duration-300;
   }
 
   .ai-glow {

@@ -34,8 +34,8 @@ export const Header = ({ viewMode, setViewMode }: HeaderProps) => {
           className={cn(
             "gap-2 rounded-lg transition-all duration-200",
             viewMode === "preview" 
-              ? "bg-card shadow-sm border border-border" 
-              : "hover:bg-card/50"
+              ? "bg-muted shadow-sm border border-border" 
+              : "hover:bg-muted/50"
           )}
         >
           <Eye className="w-4 h-4" />
@@ -48,8 +48,8 @@ export const Header = ({ viewMode, setViewMode }: HeaderProps) => {
           className={cn(
             "gap-2 rounded-lg transition-all duration-200",
             viewMode === "code" 
-              ? "bg-card shadow-sm border border-border" 
-              : "hover:bg-card/50"
+              ? "bg-muted shadow-sm border border-border" 
+              : "hover:bg-muted/50"
           )}
         >
           <Code2 className="w-4 h-4" />
