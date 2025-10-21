@@ -1,7 +1,9 @@
-import { Code2, Eye, Github, Share2, Sparkles } from "lucide-react";
+import { Code2, Eye, Github, Share2, Sparkles, Cloud } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ViewMode } from "../Workspace";
 import { cn } from "@/lib/utils";
+
+type ExtendedViewMode = ViewMode | "cloud";
 
 interface HeaderProps {
   viewMode: ViewMode;
@@ -39,7 +41,7 @@ export const Header = ({ viewMode, setViewMode }: HeaderProps) => {
           )}
         >
           <Eye className="w-4 h-4" />
-          <span className="font-medium">Preview</span>
+          {viewMode === "preview" && <span className="font-medium">Preview</span>}
         </Button>
         <Button
           variant="ghost"
@@ -53,7 +55,16 @@ export const Header = ({ viewMode, setViewMode }: HeaderProps) => {
           )}
         >
           <Code2 className="w-4 h-4" />
-          <span className="font-medium">Code</span>
+          {viewMode === "code" && <span className="font-medium">Code</span>}
+        </Button>
+        <Button
+          variant="ghost"
+          size="sm"
+          className={cn(
+            "gap-2 rounded-lg transition-all duration-200 hover:bg-muted/50"
+          )}
+        >
+          <Cloud className="w-4 h-4" />
         </Button>
       </div>
 
