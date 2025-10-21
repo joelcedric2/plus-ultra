@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { ArrowUp, Sparkles, Loader2, Paperclip, Mic, Edit3, Plus, Bot, Code, Image, FileText, RotateCcw, ChevronLeft } from "lucide-react";
+import { ArrowUp, Sparkles, Loader2, Paperclip, Mic, Edit3, Plus, Bot, Code, Image, FileText, RotateCcw, PanelLeftClose } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   DropdownMenu,
@@ -26,7 +26,7 @@ interface ChatPaneProps {
   isCollapsed: boolean;
 }
 
-export const ChatPane = ({ onToggleCollapse }: ChatPaneProps) => {
+export const ChatPane = ({ onToggleCollapse, isCollapsed }: ChatPaneProps) => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
@@ -94,11 +94,14 @@ export const ChatPane = ({ onToggleCollapse }: ChatPaneProps) => {
                   onClick={onToggleCollapse}
                   className="h-8 w-8 p-0 hover:bg-primary/10 rounded-lg transition-all"
                 >
-                  <ChevronLeft className="w-4 h-4 text-muted-foreground hover:text-foreground" />
+                  <PanelLeftClose className={cn(
+                    "w-4 h-4 text-muted-foreground hover:text-foreground transition-transform",
+                    isCollapsed && "rotate-180"
+                  )} />
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
-                <p>Collapse chat pane</p>
+                <p>{isCollapsed ? "Expand" : "Collapse"} chat pane</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
