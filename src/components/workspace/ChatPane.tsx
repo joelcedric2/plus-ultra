@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { ArrowUp, Sparkles, Loader2, Paperclip, Mic, Edit3, Plus, Bot, Code, Image, FileText } from "lucide-react";
+import { ArrowUp, Sparkles, Loader2, Paperclip, Mic, Edit3, Plus, Bot, Code, Image, FileText, RotateCcw } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   DropdownMenu,
@@ -18,6 +18,7 @@ interface Message {
   role: "user" | "assistant";
   content: string;
   timestamp: Date;
+  hasCodeModification?: boolean;
 }
 
 export const ChatPane = () => {
@@ -57,6 +58,7 @@ export const ChatPane = () => {
           role: "assistant",
           content: "I'm analyzing your request and preparing the implementation. This is a demo interface - the full AI orchestration layer will be connected soon.",
           timestamp: new Date(),
+          hasCodeModification: true, // Simulate code modification
         },
       ]);
       setIsProcessing(false);
@@ -110,9 +112,31 @@ export const ChatPane = () => {
               >
                 <p className="text-sm leading-relaxed">{message.content}</p>
               </div>
-              <span className="text-xs text-muted-foreground/70 px-1">
-                {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-              </span>
+              <div className="flex items-center justify-between w-full max-w-[85%]">
+                <span className="text-xs text-muted-foreground/70 px-1">
+                  {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                </span>
+                {message.role === "assistant" && message.hasCodeModification && (
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="h-7 px-2 gap-1.5 text-xs hover:bg-primary/10 rounded-lg transition-all"
+                          onClick={() => console.log('Rollback message:', message.id)}
+                        >
+                          <RotateCcw className="w-3.5 h-3.5" />
+                          <span>Rollback</span>
+                        </Button>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Undo code changes</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                )}
+              </div>
             </div>
           ))}
           {isProcessing && (
