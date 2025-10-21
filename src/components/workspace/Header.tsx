@@ -34,8 +34,8 @@ export const Header = ({ viewMode, setViewMode }: HeaderProps) => {
           className={cn(
             "gap-2 rounded-lg transition-all duration-200",
             viewMode === "preview" 
-              ? "bg-muted/50 shadow-sm" 
-              : "hover:bg-muted/30"
+              ? "bg-card shadow-sm border border-border" 
+              : "hover:bg-card/50"
           )}
         >
           <Eye className="w-4 h-4" />
@@ -48,8 +48,8 @@ export const Header = ({ viewMode, setViewMode }: HeaderProps) => {
           className={cn(
             "gap-2 rounded-lg transition-all duration-200",
             viewMode === "code" 
-              ? "bg-muted/50 shadow-sm" 
-              : "hover:bg-muted/30"
+              ? "bg-card shadow-sm border border-border" 
+              : "hover:bg-card/50"
           )}
         >
           <Code2 className="w-4 h-4" />
@@ -59,11 +59,11 @@ export const Header = ({ viewMode, setViewMode }: HeaderProps) => {
 
       {/* Actions */}
       <div className="flex items-center gap-2">
-        <Button variant="ghost" size="sm" className="gap-2 glass-button rounded-lg hover:bg-muted/30">
+        <Button variant="ghost" size="sm" className="gap-2 glass-button rounded-lg">
           <Github className="w-4 h-4" />
           <span className="hidden sm:inline">GitHub</span>
         </Button>
-        <Button variant="ghost" size="sm" className="gap-2 glass-button rounded-lg hover:bg-muted/30">
+        <Button variant="ghost" size="sm" className="gap-2 glass-button rounded-lg">
           <Share2 className="w-4 h-4" />
           <span className="hidden sm:inline">Share</span>
         </Button>

@@ -37,8 +37,8 @@ export const PreviewPane = () => {
             className={cn(
               "p-2 rounded-lg transition-all duration-200",
               deviceMode === "mobile" 
-                ? "bg-muted/50 shadow-sm" 
-                : "hover:bg-muted/30"
+                ? "bg-card shadow-sm border border-border" 
+                : "hover:bg-card/50"
             )}
           >
             <Smartphone className="w-4 h-4" />
@@ -50,8 +50,8 @@ export const PreviewPane = () => {
             className={cn(
               "p-2 rounded-lg transition-all duration-200",
               deviceMode === "tablet" 
-                ? "bg-muted/50 shadow-sm" 
-                : "hover:bg-muted/30"
+                ? "bg-card shadow-sm border border-border" 
+                : "hover:bg-card/50"
             )}
           >
             <Tablet className="w-4 h-4" />
@@ -63,8 +63,8 @@ export const PreviewPane = () => {
             className={cn(
               "p-2 rounded-lg transition-all duration-200",
               deviceMode === "desktop" 
-                ? "bg-muted/50 shadow-sm" 
-                : "hover:bg-muted/30"
+                ? "bg-card shadow-sm border border-border" 
+                : "hover:bg-card/50"
             )}
           >
             <Monitor className="w-4 h-4" />
@@ -100,7 +100,7 @@ export const PreviewPane = () => {
                 <div className="flex items-center justify-center gap-3 pt-4">
                   <Button
                     variant="outline"
-                    className="glass-button rounded-xl border-border hover:border-muted-foreground hover:bg-muted/30"
+                    className="glass-button rounded-xl border-border hover:border-primary/30"
                   >
                     View Examples
                   </Button>

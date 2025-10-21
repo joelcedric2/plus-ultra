@@ -165,7 +165,7 @@ export const ChatPane = () => {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="h-9 w-9 p-0 hover:bg-muted/30 rounded-lg transition-all"
+                      className="h-9 w-9 p-0 hover:bg-primary/10 rounded-lg transition-all"
                     >
                       <Paperclip className="w-4 h-4 text-muted-foreground hover:text-foreground" />
                     </Button>
@@ -183,7 +183,7 @@ export const ChatPane = () => {
                       size="sm"
                       onClick={() => setIsRecording(!isRecording)}
                       className={cn(
-                        "h-9 w-9 p-0 hover:bg-muted/30 rounded-lg transition-all",
+                        "h-9 w-9 p-0 hover:bg-primary/10 rounded-lg transition-all",
                         isRecording && "bg-destructive/20"
                       )}
                     >
@@ -201,7 +201,7 @@ export const ChatPane = () => {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="h-9 w-9 p-0 hover:bg-muted/30 rounded-lg transition-all"
+                      className="h-9 w-9 p-0 hover:bg-primary/10 rounded-lg transition-all"
                     >
                       <Edit3 className="w-4 h-4 text-muted-foreground hover:text-foreground" />
                     </Button>
@@ -219,27 +219,27 @@ export const ChatPane = () => {
                         <Button
                           variant="ghost"
                           size="sm"
-                          className="h-9 w-9 p-0 hover:bg-muted/30 rounded-lg transition-all"
+                          className="h-9 w-9 p-0 hover:bg-primary/10 rounded-lg transition-all"
                         >
                           <Plus className="w-4 h-4 text-muted-foreground hover:text-foreground" />
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="start" className="w-56 bg-card/95 backdrop-blur-xl border-border/50 z-50">
-                        <DropdownMenuItem className="gap-3 cursor-pointer hover:bg-muted/30 focus:bg-muted/30">
+                        <DropdownMenuItem className="gap-3 cursor-pointer hover:bg-primary/10 focus:bg-primary/10">
                           <Code className="w-4 h-4 text-primary" />
                           <div>
                             <div className="font-medium text-sm">Code Snippet</div>
                             <div className="text-xs text-muted-foreground">Insert code block</div>
                           </div>
                         </DropdownMenuItem>
-                        <DropdownMenuItem className="gap-3 cursor-pointer hover:bg-muted/30 focus:bg-muted/30">
+                        <DropdownMenuItem className="gap-3 cursor-pointer hover:bg-primary/10 focus:bg-primary/10">
                           <Image className="w-4 h-4 text-primary" />
                           <div>
                             <div className="font-medium text-sm">Generate Image</div>
                             <div className="text-xs text-muted-foreground">AI image generation</div>
                           </div>
                         </DropdownMenuItem>
-                        <DropdownMenuItem className="gap-3 cursor-pointer hover:bg-muted/30 focus:bg-muted/30">
+                        <DropdownMenuItem className="gap-3 cursor-pointer hover:bg-primary/10 focus:bg-primary/10">
                           <FileText className="w-4 h-4 text-primary" />
                           <div>
                             <div className="font-medium text-sm">Documentation</div>
@@ -248,7 +248,7 @@ export const ChatPane = () => {
                         </DropdownMenuItem>
                         <DropdownMenuSeparator className="bg-border/50" />
                         <DropdownMenuItem 
-                          className="gap-3 cursor-pointer hover:bg-muted/30 focus:bg-muted/30"
+                          className="gap-3 cursor-pointer hover:bg-primary/10 focus:bg-primary/10"
                           onClick={() => setProjectManagerEnabled(!projectManagerEnabled)}
                         >
                           <Bot className={cn("w-4 h-4", projectManagerEnabled ? "text-primary" : "text-muted-foreground")} />
