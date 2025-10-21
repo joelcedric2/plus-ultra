@@ -146,11 +146,9 @@ export const Header = ({ viewMode, setViewMode }: HeaderProps) => {
       <div className="flex items-center gap-2">
         <Button variant="ghost" size="sm" className="gap-2 glass-button rounded-lg">
           <Github className="w-4 h-4" />
-          <span className="hidden sm:inline">GitHub</span>
         </Button>
         <Button variant="ghost" size="sm" className="gap-2 glass-button rounded-lg">
           <Share2 className="w-4 h-4" />
-          <span className="hidden sm:inline">Share</span>
         </Button>
         <Button size="sm" className="gap-2 bg-gradient-to-r from-accent to-purple hover:opacity-90 text-accent-foreground shadow-lg shadow-accent/20 rounded-lg font-medium">
           <Sparkles className="w-4 h-4" />
