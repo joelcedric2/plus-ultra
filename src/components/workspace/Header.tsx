@@ -96,50 +96,6 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
           </Button>
         </div>
 
-        {/* Device Mode Selector - Only show in preview mode */}
-        {viewMode === "preview" && (
-          <div className="flex items-center gap-1 bg-secondary border border-border rounded-xl p-1">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setDeviceMode("mobile")}
-              className={cn(
-                "p-2 rounded-lg transition-all duration-200",
-                deviceMode === "mobile" 
-                  ? "bg-card shadow-sm border border-border" 
-                  : "hover:bg-card/50"
-              )}
-            >
-              <Smartphone className="w-4 h-4" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setDeviceMode("tablet")}
-              className={cn(
-                "p-2 rounded-lg transition-all duration-200",
-                deviceMode === "tablet" 
-                  ? "bg-card shadow-sm border border-border" 
-                  : "hover:bg-card/50"
-              )}
-            >
-              <Tablet className="w-4 h-4" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setDeviceMode("desktop")}
-              className={cn(
-                "p-2 rounded-lg transition-all duration-200",
-                deviceMode === "desktop" 
-                  ? "bg-card shadow-sm border border-border" 
-                  : "hover:bg-card/50"
-              )}
-            >
-              <Monitor className="w-4 h-4" />
-            </Button>
-          </div>
-        )}
         <Dialog open={isCloudDialogOpen} onOpenChange={setIsCloudDialogOpen}>
           <DialogTrigger asChild>
             <Button
@@ -202,6 +158,51 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
             </div>
           </DialogContent>
         </Dialog>
+
+        {/* Device Mode Selector - Only show in preview mode */}
+        {viewMode === "preview" && (
+          <div className="flex items-center gap-1 bg-secondary border border-border rounded-xl p-1">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setDeviceMode("mobile")}
+              className={cn(
+                "p-2 rounded-lg transition-all duration-200",
+                deviceMode === "mobile" 
+                  ? "bg-card shadow-sm border border-border" 
+                  : "hover:bg-card/50"
+              )}
+            >
+              <Smartphone className="w-4 h-4" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setDeviceMode("tablet")}
+              className={cn(
+                "p-2 rounded-lg transition-all duration-200",
+                deviceMode === "tablet" 
+                  ? "bg-card shadow-sm border border-border" 
+                  : "hover:bg-card/50"
+              )}
+            >
+              <Tablet className="w-4 h-4" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setDeviceMode("desktop")}
+              className={cn(
+                "p-2 rounded-lg transition-all duration-200",
+                deviceMode === "desktop" 
+                  ? "bg-card shadow-sm border border-border" 
+                  : "hover:bg-card/50"
+              )}
+            >
+              <Monitor className="w-4 h-4" />
+            </Button>
+          </div>
+        )}
       </div>
 
       {/* Actions */}
