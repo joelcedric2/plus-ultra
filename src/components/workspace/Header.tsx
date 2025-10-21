@@ -38,6 +38,16 @@ export const Header = ({ viewMode, setViewMode, onToggleChat, isChatCollapsed }:
     <header className="h-16 glass-panel flex items-center justify-between px-6 relative z-10">
       {/* Logo and Project Name */}
         <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
+          <div className="w-9 h-9 rounded-xl bg-primary/10 border border-border flex items-center justify-center">
+            <Sparkles className="w-5 h-5 text-primary" />
+          </div>
+          <span className="font-bold text-xl text-foreground">
+            PlusUltra
+          </span>
+        </div>
+        <div className="h-6 w-px bg-border/50" />
+        <span className="text-sm text-muted-foreground font-medium">Untitled Project</span>
         <Button
           variant="ghost"
           size="sm"
@@ -49,16 +59,6 @@ export const Header = ({ viewMode, setViewMode, onToggleChat, isChatCollapsed }:
             isChatCollapsed && "rotate-180"
           )} />
         </Button>
-        <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-primary/10 border border-border flex items-center justify-center">
-            <Sparkles className="w-5 h-5 text-primary" />
-          </div>
-          <span className="font-bold text-xl text-foreground">
-            PlusUltra
-          </span>
-        </div>
-        <div className="h-6 w-px bg-border/50" />
-        <span className="text-sm text-muted-foreground font-medium">Untitled Project</span>
       </div>
 
       {/* View Mode Toggle */}
