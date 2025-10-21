@@ -37,7 +37,7 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
   };
 
   return (
-    <header className="h-16 glass-panel flex items-center justify-between px-6 relative z-10">
+    <header className="h-16 bg-card/80 backdrop-blur-2xl flex items-center justify-between px-6 relative z-10">
       {/* Logo and Project Name */}
         <div className="flex items-center gap-4">
         <div className="flex items-center gap-3">
