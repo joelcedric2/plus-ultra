@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Send, Sparkles, Loader2, Paperclip, Mic, Edit3, Plus, Bot, Code, Image, FileText } from "lucide-react";
+import { ArrowUp, Sparkles, Loader2, Paperclip, Mic, Edit3, Plus, Bot, Code, Image, FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   DropdownMenu,
@@ -285,10 +285,9 @@ export const ChatPane = () => {
                     onClick={handleSend}
                     disabled={!input.trim() || isProcessing}
                     size="sm"
-                    className="h-9 px-4 gap-2 bg-gradient-to-r from-primary to-purple hover:opacity-90 disabled:opacity-50 text-primary-foreground shadow-lg shadow-primary/20 rounded-lg transition-all"
+                    className="h-8 w-8 p-0 bg-gradient-to-r from-primary to-purple hover:opacity-90 disabled:opacity-50 text-primary-foreground shadow-lg shadow-primary/20 rounded-lg transition-all"
                   >
-                    <Send className="w-4 h-4" />
-                    <span className="text-sm font-medium">Send</span>
+                    <ArrowUp className="w-4 h-4" />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>
