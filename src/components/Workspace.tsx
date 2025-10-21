@@ -20,7 +20,7 @@ export const Workspace = () => {
             <ChatPane />
           </Panel>
           
-          <PanelResizeHandle className="w-1 bg-border hover:bg-primary/50 transition-colors duration-200" />
+          <PanelResizeHandle className="w-1 bg-border/30 hover:bg-primary/50 hover:shadow-[0_0_20px_rgba(23,217,227,0.3)] transition-all duration-300" />
           
           <Panel defaultSize={65} minSize={40}>
             {viewMode === "code" ? <CodeView /> : <PreviewPane />}

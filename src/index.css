@@ -8,48 +8,56 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Neo-Organic Glass Design System */
-    --background: 240 8% 4%;
-    --foreground: 0 0% 98%;
+    /* Premium Neo-Organic Design System */
+    --background: 222 47% 3%;
+    --foreground: 210 40% 98%;
 
-    --card: 240 8% 8%;
-    --card-foreground: 0 0% 98%;
+    --card: 222 47% 7%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 240 8% 6%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 222 47% 5%;
+    --popover-foreground: 210 40% 98%;
 
-    /* Lime green primary */
-    --primary: 70 92% 55%;
-    --primary-foreground: 240 8% 4%;
+    /* Vibrant cyan-blue primary */
+    --primary: 189 94% 55%;
+    --primary-foreground: 222 47% 3%;
 
-    /* Glass secondary */
-    --secondary: 240 8% 12%;
-    --secondary-foreground: 0 0% 98%;
+    /* Deep glass secondary */
+    --secondary: 222 47% 11%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 240 8% 15%;
-    --muted-foreground: 0 0% 65%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
 
-    /* Lime accent */
-    --accent: 70 92% 55%;
-    --accent-foreground: 240 8% 4%;
+    /* Electric accent */
+    --accent: 189 94% 55%;
+    --accent-foreground: 222 47% 3%;
 
-    /* Gold premium */
-    --gold: 45 100% 60%;
-    --gold-foreground: 240 8% 4%;
+    /* Premium gold */
+    --gold: 43 96% 56%;
+    --gold-foreground: 222 47% 3%;
+
+    /* Soft purple for active states */
+    --purple: 271 76% 65%;
+    --purple-foreground: 222 47% 3%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 240 8% 18%;
-    --input: 240 8% 12%;
-    --ring: 70 92% 55%;
+    --border: 217 33% 17%;
+    --input: 222 47% 11%;
+    --ring: 189 94% 55%;
 
-    --radius: 0.75rem;
+    --radius: 0.875rem;
 
     /* Glass effect variables */
-    --glass-bg: 240 8% 8% / 0.4;
-    --glass-border: 0 0% 100% / 0.1;
-    --glass-blur: 16px;
+    --glass-bg: 222 47% 7% / 0.6;
+    --glass-border: 189 94% 55% / 0.1;
+    --glass-blur: 20px;
+
+    /* Gradient accents */
+    --gradient-primary: linear-gradient(135deg, hsl(189 94% 55%), hsl(271 76% 65%));
+    --gradient-gold: linear-gradient(135deg, hsl(43 96% 56%), hsl(35 91% 56%));
 
     /* Animation timings */
     --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
@@ -69,30 +77,31 @@ All colors MUST be HSL.
 
 @layer utilities {
   .glass-panel {
-    @apply bg-card/40 backdrop-blur-xl border border-white/10;
+    @apply bg-card/60 backdrop-blur-2xl border border-primary/10;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   }
 
   .glass-button {
-    @apply bg-card/30 backdrop-blur-md border border-white/10 hover:bg-card/50 transition-all duration-300;
+    @apply bg-card/40 backdrop-blur-lg border border-white/5 hover:border-primary/30 hover:bg-card/60 transition-all duration-300;
   }
 
   .ai-glow {
-    animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    animation: pulse-glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 
   @keyframes pulse-glow {
     0%, 100% {
       opacity: 1;
-      box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.2), 0 0 40px hsl(var(--primary) / 0.1);
     }
     50% {
-      opacity: 0.8;
-      box-shadow: 0 0 30px hsl(var(--primary) / 0.5);
+      opacity: 0.95;
+      box-shadow: 0 0 30px hsl(var(--primary) / 0.3), 0 0 60px hsl(var(--primary) / 0.15);
     }
   }
 
   .skeleton-ai {
-    @apply relative overflow-hidden bg-muted/30;
+    @apply relative overflow-hidden bg-muted/20;
   }
 
   .skeleton-ai::after {
@@ -101,7 +110,7 @@ All colors MUST be HSL.
     background: linear-gradient(
       90deg,
       transparent,
-      hsl(var(--primary) / 0.1),
+      hsl(var(--primary) / 0.15),
       transparent
     );
     animation: shimmer 2s infinite;
@@ -114,5 +123,14 @@ All colors MUST be HSL.
     100% {
       transform: translateX(100%);
     }
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .premium-glow {
+    box-shadow: 0 0 40px hsl(var(--gold) / 0.15), 0 0 80px hsl(var(--gold) / 0.1);
   }
 }

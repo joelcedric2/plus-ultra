@@ -1,133 +1,117 @@
-import { Button } from "@/components/ui/button";
-import { Smartphone, Monitor, Tablet, RefreshCw } from "lucide-react";
 import { useState } from "react";
+import { Monitor, Smartphone, Tablet } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 type DeviceMode = "mobile" | "tablet" | "desktop";
 
 export const PreviewPane = () => {
   const [deviceMode, setDeviceMode] = useState<DeviceMode>("desktop");
-  const [count, setCount] = useState(0);
+
+  const getDeviceWidth = () => {
+    switch (deviceMode) {
+      case "mobile":
+        return "max-w-[375px]";
+      case "tablet":
+        return "max-w-[768px]";
+      default:
+        return "w-full";
+    }
+  };
 
   return (
-    <div className="h-full flex flex-col bg-card/10">
-      {/* Preview Controls */}
-      <div className="h-12 border-b border-border glass-panel flex items-center justify-between px-4">
+    <div className="h-full flex flex-col bg-background/30">
+      {/* Preview Header */}
+      <div className="h-14 border-b border-border/30 glass-panel flex items-center justify-between px-6">
         <div className="flex items-center gap-2">
+          <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
           <span className="text-sm font-medium">Live Preview</span>
-          <div className="w-2 h-2 rounded-full bg-primary ai-glow" />
         </div>
         
-        <div className="flex items-center gap-2">
-          {/* Device Mode Selector */}
-          <div className="flex items-center gap-1 glass-panel rounded-lg p-1">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setDeviceMode("mobile")}
-              className={cn(
-                "h-7 w-7 p-0",
-                deviceMode === "mobile" && "bg-primary/20 text-primary"
-              )}
-            >
-              <Smartphone className="w-4 h-4" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setDeviceMode("tablet")}
-              className={cn(
-                "h-7 w-7 p-0",
-                deviceMode === "tablet" && "bg-primary/20 text-primary"
-              )}
-            >
-              <Tablet className="w-4 h-4" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setDeviceMode("desktop")}
-              className={cn(
-                "h-7 w-7 p-0",
-                deviceMode === "desktop" && "bg-primary/20 text-primary"
-              )}
-            >
-              <Monitor className="w-4 h-4" />
-            </Button>
-          </div>
-          
-          <Button variant="ghost" size="sm" className="h-7 w-7 p-0 glass-button">
-            <RefreshCw className="w-4 h-4" />
+        {/* Device Mode Selector */}
+        <div className="flex items-center gap-1 bg-secondary/50 backdrop-blur-xl rounded-xl p-1 border border-border/30">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setDeviceMode("mobile")}
+            className={cn(
+              "p-2 rounded-lg transition-all duration-200",
+              deviceMode === "mobile" 
+                ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20" 
+                : "hover:bg-card/50"
+            )}
+          >
+            <Smartphone className="w-4 h-4" />
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setDeviceMode("tablet")}
+            className={cn(
+              "p-2 rounded-lg transition-all duration-200",
+              deviceMode === "tablet" 
+                ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20" 
+                : "hover:bg-card/50"
+            )}
+          >
+            <Tablet className="w-4 h-4" />
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setDeviceMode("desktop")}
+            className={cn(
+              "p-2 rounded-lg transition-all duration-200",
+              deviceMode === "desktop" 
+                ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20" 
+                : "hover:bg-card/50"
+            )}
+          >
+            <Monitor className="w-4 h-4" />
           </Button>
         </div>
       </div>
 
       {/* Preview Content */}
-      <div className="flex-1 flex items-center justify-center p-8 overflow-auto">
-        <div
-          className={cn(
-            "glass-panel rounded-lg transition-all duration-300 h-full",
-            deviceMode === "mobile" && "max-w-[375px]",
-            deviceMode === "tablet" && "max-w-[768px]",
-            deviceMode === "desktop" && "w-full"
-          )}
-        >
-          {/* Mock App Preview */}
-          <div className="h-full flex items-center justify-center p-8">
-            <div className="text-center space-y-6">
-              <div className="space-y-2">
-                <h1 className="text-5xl font-bold bg-gradient-to-r from-primary via-primary to-primary/70 bg-clip-text text-transparent">
-                  PlusUltra
-                </h1>
-                <p className="text-xl text-muted-foreground">
-                  The Self-Healing App Studio
-                </p>
-              </div>
-
-              <div className="flex flex-col items-center gap-4 pt-4">
-                <div className="text-sm text-muted-foreground">
-                  Counter Demo
+      <div className="flex-1 p-8 flex items-center justify-center overflow-auto bg-gradient-to-br from-background via-background to-card/20">
+        <div className={cn("h-full transition-all duration-300 mx-auto", getDeviceWidth())}>
+          <div className="glass-panel rounded-2xl h-full flex flex-col overflow-hidden shadow-2xl border border-primary/10">
+            {/* Mock App Preview - Clean Empty State */}
+            <div className="flex-1 flex flex-col items-center justify-center p-12 text-center">
+              <div className="space-y-8 max-w-md">
+                {/* Logo */}
+                <div className="inline-flex">
+                  <div className="w-24 h-24 rounded-3xl bg-gradient-to-br from-primary via-primary to-purple flex items-center justify-center shadow-2xl shadow-primary/30">
+                    <span className="text-5xl">⚡️</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-6">
+                
+                {/* Text */}
+                <div className="space-y-3">
+                  <h1 className="text-4xl font-bold gradient-text">
+                    Your App Preview
+                  </h1>
+                  <p className="text-muted-foreground text-lg leading-relaxed">
+                    Start building by describing what you want in the chat. Watch your app come to life here in real-time.
+                  </p>
+                </div>
+
+                {/* CTA */}
+                <div className="flex items-center justify-center gap-3 pt-4">
                   <Button
-                    onClick={() => setCount(count - 1)}
-                    size="lg"
                     variant="outline"
-                    className="glass-button w-12 h-12 rounded-full text-xl"
+                    className="glass-button rounded-xl border-border/50 hover:border-primary/30"
                   >
-                    -
+                    View Examples
                   </Button>
-                  <span className="text-4xl font-mono font-bold text-primary min-w-[80px]">
-                    {count}
-                  </span>
-                  <Button
-                    onClick={() => setCount(count + 1)}
-                    size="lg"
-                    className="w-12 h-12 rounded-full text-xl"
-                  >
-                    +
+                  <Button className="bg-gradient-to-r from-primary to-purple hover:opacity-90 text-primary-foreground shadow-lg shadow-primary/20 rounded-xl font-medium">
+                    Start Building
                   </Button>
-                </div>
-              </div>
-
-              <div className="pt-8 space-y-3">
-                <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
-                  <div className="w-2 h-2 rounded-full bg-primary ai-glow" />
-                  <span>AI-Powered • Self-Healing • Multi-Platform</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Status Bar */}
-      <div className="h-8 border-t border-border glass-panel flex items-center justify-between px-4 text-xs text-muted-foreground">
-        <div className="flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full bg-green-500" />
-          <span>Ready</span>
-        </div>
-        <span>{deviceMode} view</span>
       </div>
     </div>
   );
