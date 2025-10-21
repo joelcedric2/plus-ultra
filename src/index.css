@@ -8,51 +8,51 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Premium Neo-Organic Design System */
-    --background: 222 47% 3%;
-    --foreground: 210 40% 98%;
+    /* Premium Neo-Organic Design System - Light Theme */
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
 
-    --card: 222 47% 7%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 98%;
+    --card-foreground: 222 47% 11%;
 
-    --popover: 222 47% 5%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
 
     /* Vibrant cyan-blue primary */
     --primary: 189 94% 55%;
-    --primary-foreground: 222 47% 3%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Deep glass secondary */
-    --secondary: 222 47% 11%;
-    --secondary-foreground: 210 40% 98%;
+    /* Light glass secondary */
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
 
     /* Electric accent */
     --accent: 189 94% 55%;
-    --accent-foreground: 222 47% 3%;
+    --accent-foreground: 0 0% 100%;
 
     /* Premium gold */
     --gold: 43 96% 56%;
-    --gold-foreground: 222 47% 3%;
+    --gold-foreground: 222 47% 11%;
 
     /* Soft purple for active states */
     --purple: 271 76% 65%;
-    --purple-foreground: 222 47% 3%;
+    --purple-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217 33% 17%;
-    --input: 222 47% 11%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
     --ring: 189 94% 55%;
 
     --radius: 0.875rem;
 
     /* Glass effect variables */
-    --glass-bg: 222 47% 7% / 0.6;
-    --glass-border: 189 94% 55% / 0.1;
+    --glass-bg: 0 0% 100% / 0.8;
+    --glass-border: 189 94% 55% / 0.15;
     --glass-blur: 20px;
 
     /* Gradient accents */
@@ -77,12 +77,12 @@ All colors MUST be HSL.
 
 @layer utilities {
   .glass-panel {
-    @apply bg-card/60 backdrop-blur-2xl border border-primary/10;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    @apply bg-card/80 backdrop-blur-2xl border border-border/50;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
   }
 
   .glass-button {
-    @apply bg-card/40 backdrop-blur-lg border border-white/5 hover:border-primary/30 hover:bg-card/60 transition-all duration-300;
+    @apply bg-card/60 backdrop-blur-lg border border-border/50 hover:border-primary/30 hover:bg-card transition-all duration-300;
   }
 
   .ai-glow {
