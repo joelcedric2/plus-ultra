@@ -8,55 +8,55 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Premium Neo-Organic Design System - Light Theme */
+    /* Premium Neo-Organic Design System - Calm Light Theme */
     --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
+    --foreground: 220 9% 20%;
 
-    --card: 0 0% 98%;
-    --card-foreground: 222 47% 11%;
+    --card: 220 13% 98%;
+    --card-foreground: 220 9% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 220 9% 20%;
 
-    /* Vibrant cyan-blue primary */
-    --primary: 189 94% 55%;
+    /* Calm greyish-blue for general UI */
+    --primary: 220 9% 46%;
     --primary-foreground: 0 0% 100%;
 
-    /* Light glass secondary */
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222 47% 11%;
+    /* Light neutral secondary */
+    --secondary: 220 13% 95%;
+    --secondary-foreground: 220 9% 20%;
 
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 220 13% 95%;
+    --muted-foreground: 220 9% 46%;
 
-    /* Electric accent */
+    /* Vibrant accent for submit/publish buttons */
     --accent: 189 94% 55%;
     --accent-foreground: 0 0% 100%;
 
     /* Premium gold */
     --gold: 43 96% 56%;
-    --gold-foreground: 222 47% 11%;
+    --gold-foreground: 220 9% 20%;
 
-    /* Soft purple for active states */
+    /* Soft purple for gradients */
     --purple: 271 76% 65%;
     --purple-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 189 94% 55%;
+    --border: 220 13% 91%;
+    --input: 220 13% 95%;
+    --ring: 220 9% 46%;
 
     --radius: 0.875rem;
 
     /* Glass effect variables */
     --glass-bg: 0 0% 100% / 0.8;
-    --glass-border: 189 94% 55% / 0.15;
+    --glass-border: 220 13% 91% / 0.5;
     --glass-blur: 20px;
 
-    /* Gradient accents */
-    --gradient-primary: linear-gradient(135deg, hsl(189 94% 55%), hsl(271 76% 65%));
+    /* Gradient accents - only for submit/publish */
+    --gradient-vibrant: linear-gradient(135deg, hsl(189 94% 55%), hsl(271 76% 65%));
     --gradient-gold: linear-gradient(135deg, hsl(43 96% 56%), hsl(35 91% 56%));
 
     /* Animation timings */

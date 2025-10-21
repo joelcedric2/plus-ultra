@@ -201,9 +201,9 @@ export const App = () => {
               {/* Editor Header */}
               <div className="h-14 border-b border-border/30 glass-panel flex items-center justify-between px-6">
                 <div className="flex items-center gap-3">
-                  <FileCode2 className="w-4 h-4 text-primary" />
+                  <FileCode2 className="w-4 h-4 text-muted-foreground" />
                   <span className="text-sm font-medium">{selectedFile}</span>
-                  <span className="text-xs text-muted-foreground px-2 py-1 bg-gold/10 rounded-md border border-gold/20">
+                  <span className="text-xs text-muted-foreground px-2 py-1 bg-muted rounded-md border border-border">
                     Modified
                   </span>
                 </div>

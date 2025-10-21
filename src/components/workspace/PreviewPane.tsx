@@ -29,7 +29,7 @@ export const PreviewPane = () => {
         </div>
         
         {/* Device Mode Selector */}
-        <div className="flex items-center gap-1 bg-secondary/50 backdrop-blur-xl rounded-xl p-1 border border-border/30">
+        <div className="flex items-center gap-1 bg-secondary border border-border rounded-xl p-1">
           <Button
             variant="ghost"
             size="sm"
@@ -37,7 +37,7 @@ export const PreviewPane = () => {
             className={cn(
               "p-2 rounded-lg transition-all duration-200",
               deviceMode === "mobile" 
-                ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20" 
+                ? "bg-card shadow-sm border border-border" 
                 : "hover:bg-card/50"
             )}
           >
@@ -50,7 +50,7 @@ export const PreviewPane = () => {
             className={cn(
               "p-2 rounded-lg transition-all duration-200",
               deviceMode === "tablet" 
-                ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20" 
+                ? "bg-card shadow-sm border border-border" 
                 : "hover:bg-card/50"
             )}
           >
@@ -63,7 +63,7 @@ export const PreviewPane = () => {
             className={cn(
               "p-2 rounded-lg transition-all duration-200",
               deviceMode === "desktop" 
-                ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20" 
+                ? "bg-card shadow-sm border border-border" 
                 : "hover:bg-card/50"
             )}
           >
@@ -81,14 +81,14 @@ export const PreviewPane = () => {
               <div className="space-y-8 max-w-md">
                 {/* Logo */}
                 <div className="inline-flex">
-                  <div className="w-24 h-24 rounded-3xl bg-gradient-to-br from-primary via-primary to-purple flex items-center justify-center shadow-2xl shadow-primary/30">
+                  <div className="w-24 h-24 rounded-3xl bg-primary/10 border border-border flex items-center justify-center">
                     <span className="text-5xl">⚡️</span>
                   </div>
                 </div>
                 
                 {/* Text */}
                 <div className="space-y-3">
-                  <h1 className="text-4xl font-bold gradient-text">
+                  <h1 className="text-4xl font-bold text-foreground">
                     Your App Preview
                   </h1>
                   <p className="text-muted-foreground text-lg leading-relaxed">
@@ -100,11 +100,11 @@ export const PreviewPane = () => {
                 <div className="flex items-center justify-center gap-3 pt-4">
                   <Button
                     variant="outline"
-                    className="glass-button rounded-xl border-border/50 hover:border-primary/30"
+                    className="glass-button rounded-xl border-border hover:border-primary/30"
                   >
                     View Examples
                   </Button>
-                  <Button className="bg-gradient-to-r from-primary to-purple hover:opacity-90 text-primary-foreground shadow-lg shadow-primary/20 rounded-xl font-medium">
+                  <Button className="bg-gradient-to-r from-accent to-purple hover:opacity-90 text-accent-foreground shadow-lg shadow-accent/20 rounded-xl font-medium">
                     Start Building
                   </Button>
                 </div>

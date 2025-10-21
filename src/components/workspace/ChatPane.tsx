@@ -94,17 +94,17 @@ export const ChatPane = () => {
             >
               {message.role === "assistant" && (
                 <div className="flex items-center gap-2 mb-1">
-                  <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-primary to-purple flex items-center justify-center">
-                    <Sparkles className="w-3.5 h-3.5 text-primary-foreground" />
+                  <div className="w-6 h-6 rounded-lg bg-primary/10 border border-border flex items-center justify-center">
+                    <Sparkles className="w-3.5 h-3.5 text-primary" />
                   </div>
                   <span className="text-xs font-medium text-muted-foreground">PlusUltra AI</span>
                 </div>
               )}
               <div
                 className={cn(
-                  "max-w-[85%] rounded-2xl px-4 py-3 shadow-lg",
+                  "max-w-[85%] rounded-2xl px-4 py-3 shadow-sm",
                   message.role === "user"
-                    ? "bg-gradient-to-br from-primary/90 to-purple/90 text-primary-foreground border border-primary/20"
+                    ? "bg-primary/10 border border-border"
                     : "glass-panel border border-border/50"
                 )}
               >
@@ -117,10 +117,10 @@ export const ChatPane = () => {
           ))}
           {isProcessing && (
             <div className="flex items-start gap-3 animate-fade-in">
-              <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-primary to-purple flex items-center justify-center">
-                <Sparkles className="w-3.5 h-3.5 text-primary-foreground" />
+              <div className="w-6 h-6 rounded-lg bg-primary/10 border border-border flex items-center justify-center">
+                <Sparkles className="w-3.5 h-3.5 text-primary" />
               </div>
-              <div className="glass-panel border border-border/50 p-4 rounded-2xl skeleton-ai shadow-lg">
+              <div className="glass-panel border border-border/50 p-4 rounded-2xl skeleton-ai shadow-sm">
                 <div className="flex items-center gap-3">
                   <Loader2 className="w-4 h-4 animate-spin text-primary" />
                   <span className="text-sm text-muted-foreground">Processing request...</span>
@@ -285,7 +285,7 @@ export const ChatPane = () => {
                     onClick={handleSend}
                     disabled={!input.trim() || isProcessing}
                     size="sm"
-                    className="h-8 w-8 p-0 bg-gradient-to-r from-primary to-purple hover:opacity-90 disabled:opacity-50 text-primary-foreground shadow-lg shadow-primary/20 rounded-lg transition-all"
+                    className="h-8 w-8 p-0 bg-gradient-to-r from-accent to-purple hover:opacity-90 disabled:opacity-50 text-accent-foreground shadow-lg shadow-accent/20 rounded-lg transition-all"
                   >
                     <ArrowUp className="w-4 h-4" />
                   </Button>
