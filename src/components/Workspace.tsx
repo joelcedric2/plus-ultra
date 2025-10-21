@@ -6,9 +6,11 @@ import { CodeView } from "./workspace/CodeView";
 import { PreviewPane } from "./workspace/PreviewPane";
 
 export type ViewMode = "code" | "preview";
+export type DeviceMode = "mobile" | "tablet" | "desktop";
 
 export const Workspace = () => {
   const [viewMode, setViewMode] = useState<ViewMode>("preview");
+  const [deviceMode, setDeviceMode] = useState<DeviceMode>("desktop");
   const chatPanelRef = useRef<ImperativePanelHandle>(null);
   const [isChatCollapsed, setIsChatCollapsed] = useState(false);
 
@@ -28,6 +30,8 @@ export const Workspace = () => {
       <Header 
         viewMode={viewMode} 
         setViewMode={setViewMode}
+        deviceMode={deviceMode}
+        setDeviceMode={setDeviceMode}
         onToggleChat={handleToggleChat}
         isChatCollapsed={isChatCollapsed}
       />
@@ -49,7 +53,7 @@ export const Workspace = () => {
           <PanelResizeHandle className="w-1 bg-border/30 hover:bg-primary/50 hover:shadow-[0_0_20px_rgba(23,217,227,0.3)] transition-all duration-300" />
           
           <Panel defaultSize={65} minSize={40}>
-            {viewMode === "code" ? <CodeView /> : <PreviewPane />}
+            {viewMode === "code" ? <CodeView /> : <PreviewPane deviceMode={deviceMode} />}
           </Panel>
         </PanelGroup>
       </div>

@@ -1,6 +1,6 @@
-import { Code2, Eye, Github, Share2, Sparkles, Cloud, PanelLeftClose } from "lucide-react";
+import { Code2, Eye, Github, Share2, Sparkles, Cloud, PanelLeftClose, Monitor, Smartphone, Tablet } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ViewMode } from "../Workspace";
+import { ViewMode, DeviceMode } from "../Workspace";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import {
@@ -19,11 +19,13 @@ type ExtendedViewMode = ViewMode | "cloud";
 interface HeaderProps {
   viewMode: ViewMode;
   setViewMode: (mode: ViewMode) => void;
+  deviceMode: DeviceMode;
+  setDeviceMode: (mode: DeviceMode) => void;
   onToggleChat: () => void;
   isChatCollapsed: boolean;
 }
 
-export const Header = ({ viewMode, setViewMode, onToggleChat, isChatCollapsed }: HeaderProps) => {
+export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onToggleChat, isChatCollapsed }: HeaderProps) => {
   const [supabaseUrl, setSupabaseUrl] = useState("");
   const [supabaseKey, setSupabaseKey] = useState("");
   const [isCloudDialogOpen, setIsCloudDialogOpen] = useState(false);
@@ -62,35 +64,82 @@ export const Header = ({ viewMode, setViewMode, onToggleChat, isChatCollapsed }:
       </div>
 
       {/* View Mode Toggle */}
-      <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-1">
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => setViewMode("preview")}
-          className={cn(
-            "gap-2 rounded-lg transition-all duration-200",
-            viewMode === "preview" 
-              ? "bg-muted shadow-sm border border-border" 
-              : "hover:bg-muted/50"
-          )}
-        >
-          <Eye className="w-4 h-4" />
-          {viewMode === "preview" && <span className="font-medium">Preview</span>}
-        </Button>
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => setViewMode("code")}
-          className={cn(
-            "gap-2 rounded-lg transition-all duration-200",
-            viewMode === "code" 
-              ? "bg-muted shadow-sm border border-border" 
-              : "hover:bg-muted/50"
-          )}
-        >
-          <Code2 className="w-4 h-4" />
-          {viewMode === "code" && <span className="font-medium">Code</span>}
-        </Button>
+      <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-3">
+        <div className="flex items-center gap-1">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setViewMode("preview")}
+            className={cn(
+              "gap-2 rounded-lg transition-all duration-200",
+              viewMode === "preview" 
+                ? "bg-muted shadow-sm border border-border" 
+                : "hover:bg-muted/50"
+            )}
+          >
+            <Eye className="w-4 h-4" />
+            {viewMode === "preview" && <span className="font-medium">Preview</span>}
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setViewMode("code")}
+            className={cn(
+              "gap-2 rounded-lg transition-all duration-200",
+              viewMode === "code" 
+                ? "bg-muted shadow-sm border border-border" 
+                : "hover:bg-muted/50"
+            )}
+          >
+            <Code2 className="w-4 h-4" />
+            {viewMode === "code" && <span className="font-medium">Code</span>}
+          </Button>
+        </div>
+
+        {/* Device Mode Selector - Only show in preview mode */}
+        {viewMode === "preview" && (
+          <div className="flex items-center gap-1 bg-secondary border border-border rounded-xl p-1">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setDeviceMode("mobile")}
+              className={cn(
+                "p-2 rounded-lg transition-all duration-200",
+                deviceMode === "mobile" 
+                  ? "bg-card shadow-sm border border-border" 
+                  : "hover:bg-card/50"
+              )}
+            >
+              <Smartphone className="w-4 h-4" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setDeviceMode("tablet")}
+              className={cn(
+                "p-2 rounded-lg transition-all duration-200",
+                deviceMode === "tablet" 
+                  ? "bg-card shadow-sm border border-border" 
+                  : "hover:bg-card/50"
+              )}
+            >
+              <Tablet className="w-4 h-4" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setDeviceMode("desktop")}
+              className={cn(
+                "p-2 rounded-lg transition-all duration-200",
+                deviceMode === "desktop" 
+                  ? "bg-card shadow-sm border border-border" 
+                  : "hover:bg-card/50"
+              )}
+            >
+              <Monitor className="w-4 h-4" />
+            </Button>
+          </div>
+        )}
         <Dialog open={isCloudDialogOpen} onOpenChange={setIsCloudDialogOpen}>
           <DialogTrigger asChild>
             <Button

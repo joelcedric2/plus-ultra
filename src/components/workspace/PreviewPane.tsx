@@ -1,12 +1,12 @@
-import { useState } from "react";
-import { Monitor, Smartphone, Tablet } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { DeviceMode } from "../Workspace";
 
-type DeviceMode = "mobile" | "tablet" | "desktop";
+interface PreviewPaneProps {
+  deviceMode: DeviceMode;
+}
 
-export const PreviewPane = () => {
-  const [deviceMode, setDeviceMode] = useState<DeviceMode>("desktop");
+export const PreviewPane = ({ deviceMode }: PreviewPaneProps) => {
 
   const getDeviceWidth = () => {
     switch (deviceMode) {
@@ -26,49 +26,6 @@ export const PreviewPane = () => {
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
           <span className="text-sm font-medium">Live Preview</span>
-        </div>
-        
-        {/* Device Mode Selector */}
-        <div className="flex items-center gap-1 bg-secondary border border-border rounded-xl p-1">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => setDeviceMode("mobile")}
-            className={cn(
-              "p-2 rounded-lg transition-all duration-200",
-              deviceMode === "mobile" 
-                ? "bg-card shadow-sm border border-border" 
-                : "hover:bg-card/50"
-            )}
-          >
-            <Smartphone className="w-4 h-4" />
-          </Button>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => setDeviceMode("tablet")}
-            className={cn(
-              "p-2 rounded-lg transition-all duration-200",
-              deviceMode === "tablet" 
-                ? "bg-card shadow-sm border border-border" 
-                : "hover:bg-card/50"
-            )}
-          >
-            <Tablet className="w-4 h-4" />
-          </Button>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => setDeviceMode("desktop")}
-            className={cn(
-              "p-2 rounded-lg transition-all duration-200",
-              deviceMode === "desktop" 
-                ? "bg-card shadow-sm border border-border" 
-                : "hover:bg-card/50"
-            )}
-          >
-            <Monitor className="w-4 h-4" />
-          </Button>
         </div>
       </div>
 
