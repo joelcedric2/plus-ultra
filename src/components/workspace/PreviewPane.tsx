@@ -21,14 +21,6 @@ export const PreviewPane = ({ deviceMode }: PreviewPaneProps) => {
 
   return (
     <div className="h-full flex flex-col bg-background/30">
-      {/* Preview Header */}
-      <div className="h-14 border-b border-border/30 glass-panel flex items-center justify-between px-6">
-        <div className="flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-          <span className="text-sm font-medium">Live Preview</span>
-        </div>
-      </div>
-
       {/* Preview Content */}
       <div className="flex-1 p-8 flex items-center justify-center overflow-auto bg-gradient-to-br from-background via-background to-card/20">
         <div className={cn("h-full transition-all duration-300 mx-auto", getDeviceWidth())}>
