@@ -1,4 +1,4 @@
-import { Code2, Eye, Github, Share2, Sparkles, Cloud, PanelLeftClose, Monitor, Smartphone, Tablet, ArrowUpRight, RotateCw } from "lucide-react";
+import { Code2, Eye, Github, Share2, Sparkles, Cloud, PanelLeftClose, Monitor, Smartphone, Tablet, ArrowUpRight, RotateCw, ChevronDown, Settings, Edit } from "lucide-react";
 import logoImage from "@/assets/plusultra-logo.png";
 import { Button } from "@/components/ui/button";
 import { ViewMode, DeviceMode } from "../Workspace";
@@ -20,6 +20,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Progress } from "@/components/ui/progress";
+import { DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
 
 type ExtendedViewMode = ViewMode | "cloud";
 
@@ -51,9 +53,34 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
           <div className="w-9 h-9 rounded-xl flex items-center justify-center">
             <img src={logoImage} alt="PlusUltra Logo" className="w-9 h-9 object-contain" />
           </div>
-          <span className="font-bold text-xl text-foreground">
-            Untitled Project
-          </span>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+                <span className="font-bold text-xl text-foreground">
+                  Untitled Project
+                </span>
+                <ChevronDown className="w-4 h-4 text-muted-foreground" />
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="w-64 bg-card border-border z-50 p-3">
+              <div className="mb-3">
+                <div className="flex items-center justify-between text-xs text-muted-foreground mb-2">
+                  <span>Tokens Used</span>
+                  <span>750 / 1000</span>
+                </div>
+                <Progress value={75} className="h-2" />
+              </div>
+              <DropdownMenuSeparator className="bg-border/50 mb-2" />
+              <DropdownMenuItem className="gap-3 cursor-pointer hover:bg-primary/10 focus:bg-primary/10">
+                <Edit className="w-4 h-4" />
+                <span>Rename Project</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem className="gap-3 cursor-pointer hover:bg-primary/10 focus:bg-primary/10">
+                <Settings className="w-4 h-4" />
+                <span>Settings</span>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
         <div className="h-6 w-px bg-border/50" />
         <span className="text-sm text-muted-foreground font-medium">PlusUltra</span>
