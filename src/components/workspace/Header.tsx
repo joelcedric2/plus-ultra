@@ -1,4 +1,4 @@
-import { Code2, Eye, Github, Share2, Sparkles, Cloud, PanelLeftClose, Monitor, Smartphone, Tablet, ArrowUpRight, RotateCw, ChevronDown, Settings, Edit } from "lucide-react";
+import { Code2, Eye, Github, Share2, Sparkles, Cloud, PanelLeftClose, Monitor, Smartphone, Tablet, ArrowUpRight, RotateCw, ChevronDown, Settings, Edit, ChevronLeft, Gift } from "lucide-react";
 import logoImage from "@/assets/plusultra-logo.png";
 import { Button } from "@/components/ui/button";
 import { ViewMode, DeviceMode } from "../Workspace";
@@ -63,6 +63,11 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start" className="w-64 bg-card border-border z-50 p-3">
+              <DropdownMenuItem className="gap-3 cursor-pointer hover:bg-primary/10 focus:bg-primary/10 mb-2">
+                <ChevronLeft className="w-4 h-4" />
+                <span>Go to dashboard</span>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator className="bg-border/50 mb-3" />
               <div className="mb-3">
                 <div className="flex items-center justify-between text-xs mb-2">
                   <span className="text-muted-foreground">Tokens</span>
@@ -70,6 +75,10 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
                 </div>
                 <Progress value={66} className="h-2 [&>div]:bg-gradient-to-r [&>div]:from-blue-500 [&>div]:to-purple-500" />
               </div>
+              <DropdownMenuItem className="gap-3 cursor-pointer hover:bg-primary/10 focus:bg-primary/10 mb-2">
+                <Gift className="w-4 h-4 text-primary" />
+                <span>Get Free Tokens</span>
+              </DropdownMenuItem>
               <DropdownMenuSeparator className="bg-border/50 mb-2" />
               <DropdownMenuItem className="gap-3 cursor-pointer hover:bg-primary/10 focus:bg-primary/10">
                 <Edit className="w-4 h-4" />
