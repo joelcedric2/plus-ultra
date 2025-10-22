@@ -1,4 +1,4 @@
-import { Code2, Eye, Github, Share2, Sparkles, Cloud, PanelLeftClose, Monitor, Smartphone, Tablet } from "lucide-react";
+import { Code2, Eye, Github, Share2, Sparkles, Cloud, PanelLeftClose, Monitor, Smartphone, Tablet, ArrowUpRight, RotateCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ViewMode, DeviceMode } from "../Workspace";
 import { cn } from "@/lib/utils";
@@ -11,6 +11,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
@@ -159,47 +165,68 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
         </Dialog>
         </div>
 
-        {/* Device Mode Selector - Only show in preview mode */}
+        {/* Device & Page Controls - Only show in preview mode */}
         {viewMode === "preview" && (
-          <div className="flex items-center gap-0.5 bg-secondary border border-border rounded-xl p-0.5 ml-2">
+          <div className="flex items-center gap-2 ml-3">
+            {/* Cycling Screen Size Icon */}
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => setDeviceMode("mobile")}
-              className={cn(
-                "p-1.5 rounded-lg transition-all duration-200",
-                deviceMode === "mobile" 
-                  ? "bg-card shadow-sm border border-border" 
-                  : "hover:bg-card/50"
-              )}
+              onClick={() => {
+                const modes: DeviceMode[] = ["mobile", "tablet", "desktop"];
+                const currentIndex = modes.indexOf(deviceMode);
+                const nextIndex = (currentIndex + 1) % modes.length;
+                setDeviceMode(modes[nextIndex]);
+              }}
+              className="h-8 w-8 p-0 hover:bg-muted/50 rounded-lg transition-all"
             >
-              <Smartphone className="w-3.5 h-3.5" />
+              {deviceMode === "mobile" && <Smartphone className="w-3.5 h-3.5" />}
+              {deviceMode === "tablet" && <Tablet className="w-3.5 h-3.5" />}
+              {deviceMode === "desktop" && <Monitor className="w-3.5 h-3.5" />}
             </Button>
+
+            {/* Separator */}
+            <span className="text-muted-foreground text-sm">/</span>
+
+            {/* Page Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="h-8 px-2 hover:bg-muted/50 rounded-lg text-xs font-medium"
+                >
+                  home
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="bg-card border-border">
+                <DropdownMenuItem className="text-xs">/home</DropdownMenuItem>
+                <DropdownMenuItem className="text-xs">/camera</DropdownMenuItem>
+                <DropdownMenuItem className="text-xs">/settings</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            {/* Spacer */}
+            <div className="w-4" />
+
+            {/* Open in New Window */}
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => setDeviceMode("tablet")}
-              className={cn(
-                "p-1.5 rounded-lg transition-all duration-200",
-                deviceMode === "tablet" 
-                  ? "bg-card shadow-sm border border-border" 
-                  : "hover:bg-card/50"
-              )}
+              onClick={() => window.open(window.location.href, '_blank')}
+              className="h-8 w-8 p-0 hover:bg-muted/50 rounded-lg transition-all"
             >
-              <Tablet className="w-3.5 h-3.5" />
+              <ArrowUpRight className="w-3.5 h-3.5" />
             </Button>
+
+            {/* Refresh Preview */}
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => setDeviceMode("desktop")}
-              className={cn(
-                "p-1.5 rounded-lg transition-all duration-200",
-                deviceMode === "desktop" 
-                  ? "bg-card shadow-sm border border-border" 
-                  : "hover:bg-card/50"
-              )}
+              onClick={() => window.location.reload()}
+              className="h-8 w-8 p-0 hover:bg-muted/50 rounded-lg transition-all"
             >
-              <Monitor className="w-3.5 h-3.5" />
+              <RotateCw className="w-3.5 h-3.5" />
             </Button>
           </div>
         )}
