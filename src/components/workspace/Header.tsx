@@ -60,7 +60,7 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
           variant="ghost"
           size="sm"
           onClick={onToggleChat}
-          className="h-8 w-8 p-0 hover:bg-primary/10 rounded-lg transition-all mr-6"
+          className="h-8 w-8 p-0 hover:bg-primary/10 rounded-lg transition-all mr-9"
         >
           <PanelLeftClose className={cn(
             "w-4 h-4 text-muted-foreground hover:text-foreground transition-transform",
