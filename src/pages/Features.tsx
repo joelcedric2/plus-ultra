@@ -194,13 +194,16 @@ const Features = () => {
             The Self-Debugging App Studio
           </Badge>
           
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-foreground animate-fade-in [animation-delay:100ms] flex items-center justify-center gap-4">
-            <img src={logo} alt="PlusUltra" className="h-12 md:h-16" />
-            PlusUltra <br className="hidden md:block" />
-            <span className="bg-gradient-to-r from-accent to-purple bg-clip-text text-transparent">
-              Your coding assistant that get smarter there more you build
-            </span>
-          </h1>
+          <div className="animate-fade-in [animation-delay:100ms]">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 text-foreground flex items-center justify-center gap-4">
+              <img src={logo} alt="PlusUltra" className="h-12 md:h-16" />
+              PlusUltra
+            </h1>
+            <p className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-accent to-purple bg-clip-text text-transparent">
+              Your coding assistant that gets Smarter<br />
+              the more you build
+            </p>
+          </div>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-4xl mx-auto animate-fade-in [animation-delay:200ms]">
             Web and mobile apps designed, debugged, and shipped by AI. From concept to App Store in minutes, not months.
