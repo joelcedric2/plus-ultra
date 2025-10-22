@@ -23,9 +23,9 @@ export const LandingHeader = () => {
         <div className="flex items-center gap-4">
           {/* Pricing Link */}
           <Button variant="ghost" asChild>
-            <a href="#pricing" className="text-foreground hover:text-accent">
+            <Link to="/pricing" className="text-foreground hover:text-accent">
               Pricing
-            </a>
+            </Link>
           </Button>
 
           {/* GitHub Repository Link */}
