@@ -57,7 +57,7 @@ const Publish = () => {
       ],
       docsUrl: "https://developer.apple.com/app-store/submissions/",
       color: "from-gray-700 to-gray-900",
-      textStyle: "text-foreground font-bold text-3xl drop-shadow-[0_2px_8px_rgba(255,255,255,0.3)]"
+      textStyle: "bg-gradient-to-br from-gray-200 via-gray-400 to-gray-200 bg-clip-text text-transparent font-bold [text-shadow:0_1px_2px_rgba(0,0,0,0.3)]"
     },
     {
       id: "google",
