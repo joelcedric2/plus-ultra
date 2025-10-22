@@ -129,7 +129,7 @@ const Pricing = () => {
             {tiers.map((tier) => (
               <Card 
                 key={tier.name} 
-                className={`glass-panel relative flex flex-col ${
+                className={`glass-panel relative flex flex-col h-full ${
                   tier.popular ? 'border-2 border-accent shadow-lg scale-105' : ''
                 }`}
               >
