@@ -210,7 +210,8 @@ const Pricing = () => {
               <CardContent>
                 <p className="text-muted-foreground">
                   Temporal Code Intelligence (TCI) provides advanced debugging with temporal graphs, replays, 
-                  and predictions. Available in Pro and Enterprise tiers for time-saving bug resolution.
+                  and predictions. TCI gets smarter the more you use it, learning to understand your intent and 
+                  providing increasingly personalized insights. Available in Pro and Enterprise tiers for time-saving bug resolution.
                 </p>
               </CardContent>
             </Card>
