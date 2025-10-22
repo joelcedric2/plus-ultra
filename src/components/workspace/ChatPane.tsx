@@ -64,7 +64,57 @@ export const ChatPane = () => {
       </div>
 
       {/* Messages */}
-      
+      <ScrollArea className="flex-1 p-5">
+        <div className="space-y-6">
+          {messages.map((message) => (
+            <div
+              key={message.id}
+              className={cn(
+                "flex gap-3 group animate-in fade-in-50 slide-in-from-bottom-3",
+                message.role === "assistant" && "items-start"
+              )}
+            >
+              {message.role === "assistant" && (
+                <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-accent to-purple flex items-center justify-center flex-shrink-0 shadow-lg shadow-accent/20">
+                  <Sparkles className="w-4 h-4 text-white" />
+                </div>
+              )}
+              <div
+                className={cn(
+                  "flex-1 space-y-2 overflow-hidden",
+                  message.role === "user" && "ml-10"
+                )}
+              >
+                <div
+                  className={cn(
+                    "prose prose-sm max-w-none",
+                    message.role === "user" 
+                      ? "bg-secondary/50 rounded-xl px-4 py-3 border border-border/50"
+                      : "text-foreground"
+                  )}
+                >
+                  <p className="text-sm leading-relaxed whitespace-pre-wrap break-words m-0">
+                    {message.content}
+                  </p>
+                </div>
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <span>{message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+          {isProcessing && (
+            <div className="flex gap-3 items-start animate-in fade-in-50">
+              <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-accent to-purple flex items-center justify-center shadow-lg shadow-accent/20">
+                <Loader2 className="w-4 h-4 text-white animate-spin" />
+              </div>
+              <div className="flex-1">
+                <p className="text-sm text-muted-foreground">Processing your request...</p>
+              </div>
+            </div>
+          )}
+        </div>
+      </ScrollArea>
 
       {/* Input Area */}
       <div className="p-5 border-t border-border/30 bg-card/30 backdrop-blur-xl">

@@ -47,7 +47,7 @@ export const Workspace = () => {
             onCollapse={() => setIsChatCollapsed(true)}
             onExpand={() => setIsChatCollapsed(false)}
           >
-            <ChatPane onToggleCollapse={handleToggleChat} isCollapsed={isChatCollapsed} />
+            <ChatPane />
           </Panel>
           
           <PanelResizeHandle className="w-1 bg-border/30 hover:bg-primary/50 hover:shadow-[0_0_20px_rgba(23,217,227,0.3)] transition-all duration-300" />
