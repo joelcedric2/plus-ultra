@@ -71,7 +71,7 @@ export const ChatPane = () => {
               key={message.id}
               className={cn(
                 "flex gap-3 group animate-in fade-in-50 slide-in-from-bottom-3",
-                message.role === "assistant" && "items-start"
+                message.role === "assistant" ? "items-start justify-start" : "items-start justify-end"
               )}
             >
               {message.role === "assistant" && (
@@ -81,8 +81,8 @@ export const ChatPane = () => {
               )}
               <div
                 className={cn(
-                  "flex-1 space-y-2 overflow-hidden",
-                  message.role === "user" && "ml-10"
+                  "max-w-[80%] space-y-2 overflow-hidden",
+                  message.role === "assistant" ? "mr-auto" : "ml-auto"
                 )}
               >
                 <div
@@ -100,7 +100,10 @@ export const ChatPane = () => {
                     {message.content}
                   </p>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                <div className={cn(
+                  "flex items-center gap-2 text-xs text-muted-foreground",
+                  message.role === "user" && "justify-end"
+                )}>
                   <span>{message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                 </div>
               </div>
