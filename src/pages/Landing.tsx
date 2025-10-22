@@ -27,7 +27,7 @@ const Landing = () => {
         <div className="max-w-7xl mx-auto text-center">
           <Badge className="mb-6 bg-accent/10 text-accent border-accent/20 hover:bg-accent/20">
             <Sparkles className="w-3 h-3 mr-1" />
-            Self-debugging not healing
+            Self-debugging App Studio
           </Badge>
           
           <h1 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
