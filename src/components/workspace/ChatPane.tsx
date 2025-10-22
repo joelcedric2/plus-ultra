@@ -87,13 +87,16 @@ export const ChatPane = () => {
               >
                 <div
                   className={cn(
-                    "prose prose-sm max-w-none",
+                    "prose prose-sm max-w-none rounded-xl px-4 py-3",
                     message.role === "user" 
-                      ? "bg-secondary/50 rounded-xl px-4 py-3 border border-border/50"
-                      : "text-foreground"
+                      ? "bg-secondary/50 border border-border/50"
+                      : "bg-muted/50 border border-border/30"
                   )}
                 >
-                  <p className="text-sm leading-relaxed whitespace-pre-wrap break-words m-0">
+                  <p className={cn(
+                    "text-sm leading-relaxed whitespace-pre-wrap break-words m-0",
+                    message.role === "assistant" && "text-muted-foreground"
+                  )}>
                     {message.content}
                   </p>
                 </div>
