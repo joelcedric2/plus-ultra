@@ -278,9 +278,11 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
         <Button variant="ghost" size="sm" className="h-8 w-8 p-0 hover:bg-muted/50 rounded-lg transition-all">
           <Share2 className="w-4 h-4" />
         </Button>
-        <Button size="sm" className="gap-2 bg-gradient-to-r from-accent to-purple hover:opacity-90 text-accent-foreground shadow-lg shadow-accent/20 rounded-lg font-medium">
-          <Sparkles className="w-4 h-4" />
-          Publish
+        <Button size="sm" className="gap-2 bg-gradient-to-r from-accent to-purple hover:opacity-90 text-accent-foreground shadow-lg shadow-accent/20 rounded-lg font-medium" asChild>
+          <Link to="/publish">
+            <Sparkles className="w-4 h-4" />
+            Publish
+          </Link>
         </Button>
       </div>
     </header>
