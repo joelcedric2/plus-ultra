@@ -40,12 +40,19 @@ const Landing = () => {
 
           {/* Build Prompt Input */}
           <div className="max-w-3xl mx-auto mb-8">
-            <div className="relative glass-panel rounded-2xl p-2">
+            <div className="relative bg-secondary/50 border border-border/50 rounded-2xl focus-within:border-primary/50 transition-colors">
               <Textarea
                 value={prompt}
-                onChange={(e) => setPrompt(e.target.value)}
+                onChange={(e) => {
+                  setPrompt(e.target.value);
+                  // Auto-resize
+                  e.target.style.height = 'auto';
+                  e.target.style.height = e.target.scrollHeight + 'px';
+                }}
                 placeholder="build and ship your app now"
-                className="min-h-[120px] resize-none border-0 bg-transparent focus-visible:ring-0 text-lg"
+                className="w-full resize-none bg-transparent border-0 focus-visible:ring-0 focus-visible:ring-offset-0 rounded-2xl py-4 px-6 pr-20 placeholder:text-muted-foreground/50 max-h-[200px] overflow-y-auto leading-tight min-h-[120px] text-lg"
+                rows={1}
+                style={{ height: 'auto' }}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" && !e.shiftKey) {
                     e.preventDefault();
@@ -53,11 +60,12 @@ const Landing = () => {
                   }
                 }}
               />
-              <div className="flex justify-end">
+              <div className="flex items-center justify-end px-4 pb-3">
                 <Button 
                   onClick={handleBuildApp}
-                  className="bg-gradient-to-r from-accent to-purple text-white border-0 hover:opacity-90"
                   disabled={!prompt.trim()}
+                  size="sm"
+                  className="h-10 px-6 bg-gradient-to-r from-accent to-purple text-white border-0 hover:opacity-90 disabled:opacity-50 shadow-lg shadow-accent/20 rounded-lg transition-all"
                 >
                   <Rocket className="w-4 h-4 mr-2" />
                   Start Building
