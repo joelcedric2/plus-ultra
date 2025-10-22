@@ -209,7 +209,7 @@ const Pricing = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Temporal Causality Intelligence (TCI) provides advanced debugging with temporal graphs, replays, 
+                  Temporal Code Intelligence (TCI) provides advanced debugging with temporal graphs, replays, 
                   and predictions. Available in Pro and Enterprise tiers for time-saving bug resolution.
                 </p>
               </CardContent>
