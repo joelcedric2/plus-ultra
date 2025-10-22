@@ -21,6 +21,13 @@ export const LandingHeader = () => {
 
         {/* Right side navigation */}
         <div className="flex items-center gap-4">
+          {/* Features Link */}
+          <Button variant="ghost" asChild>
+            <Link to="/features" className="text-foreground hover:text-accent">
+              Features
+            </Link>
+          </Button>
+
           {/* Pricing Link */}
           <Button variant="ghost" asChild>
             <Link to="/pricing" className="text-foreground hover:text-accent">
