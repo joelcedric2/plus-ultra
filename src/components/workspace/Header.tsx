@@ -64,10 +64,11 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start" className="w-64 bg-card border-border z-50 p-3">
               <div className="mb-3">
-                <div className="flex items-center justify-between text-xs text-muted-foreground mb-2">
-                  <span>66.2 tokens left</span>
+                <div className="flex items-center justify-between text-xs mb-2">
+                  <span className="text-muted-foreground">Tokens</span>
+                  <span className="font-medium text-foreground">66.2 left</span>
                 </div>
-                <Progress value={66} className="h-2" />
+                <Progress value={66} className="h-2 [&>div]:bg-gradient-to-r [&>div]:from-blue-500 [&>div]:to-purple-500" />
               </div>
               <DropdownMenuSeparator className="bg-border/50 mb-2" />
               <DropdownMenuItem className="gap-3 cursor-pointer hover:bg-primary/10 focus:bg-primary/10">
