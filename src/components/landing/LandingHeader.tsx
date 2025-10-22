@@ -15,8 +15,8 @@ export const LandingHeader = () => {
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-          <img src={plusUltraLogo} alt="PlusUltra" className="h-8 w-auto" />
-          <span className="font-bold text-xl">PlusUltra</span>
+          <img src={plusUltraLogo} alt="PlusUltra" className="h-12 w-auto" />
+          <span className="font-bold text-2xl">PlusUltra</span>
         </Link>
 
         {/* Right side navigation */}
