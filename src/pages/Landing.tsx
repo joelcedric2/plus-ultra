@@ -50,7 +50,7 @@ const Landing = () => {
                   e.target.style.height = e.target.scrollHeight + 'px';
                 }}
                 placeholder="build and ship your app now"
-                className="w-full resize-none bg-transparent border-0 focus-visible:ring-0 focus-visible:ring-offset-0 rounded-2xl py-4 px-6 pr-20 placeholder:text-muted-foreground/50 max-h-[200px] overflow-y-auto leading-tight min-h-[120px] text-lg"
+                className="w-full resize-none bg-transparent border-0 focus-visible:ring-0 focus-visible:ring-offset-0 rounded-2xl py-2 px-4 pr-20 placeholder:text-muted-foreground/50 max-h-[200px] overflow-y-auto leading-tight min-h-[56px] text-base"
                 rows={1}
                 style={{ height: 'auto' }}
                 onKeyDown={(e) => {
@@ -62,7 +62,7 @@ const Landing = () => {
               />
               
               {/* Bottom Row: Tools and Send Button */}
-              <div className="flex items-center justify-between px-4 pb-3">
+              <div className="flex items-center justify-between px-2 pb-1.5">
                 <div className="flex items-center gap-1">
                   {/* Attach Button */}
                   <Button variant="ghost" size="sm" className="h-8 w-8 p-0 hover:bg-primary/10 rounded-lg transition-all">
