@@ -132,6 +132,7 @@ const Features = () => {
       whatItIs: "Senior-level guidance system that keeps projects stable and efficient.",
       features: [
         "Adaptive suggestions for refactors and optimizations",
+        "Guides you on what to keep or remove from your project",
         "Active rollback for failed updates",
         "Performance telemetry monitoring",
         "Failure reasoning in plain language"
