@@ -3,6 +3,8 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { FileCode2, Folder, ChevronRight, ChevronDown, File } from "lucide-react";
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 import { cn } from "@/lib/utils";
+import { useSimulatedCollaboration } from "@/hooks/useSimulatedCollaboration";
+import { CollaboratorCursor } from "./CollaboratorCursor";
 
 interface FileNode {
   name: string;
@@ -137,6 +139,7 @@ const FileTreeItem = ({ node, depth = 0, onSelect, selectedFile, parentPath = ""
 
 export const CodeView = () => {
   const [selectedFile, setSelectedFile] = useState("src/App.tsx");
+  const { collaborators } = useSimulatedCollaboration();
 
   const mockCode = `import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -214,8 +217,17 @@ export const App = () => {
 
               {/* Code Editor Area */}
               <ScrollArea className="flex-1">
-                <div className="p-6">
-                  <div className="glass-panel rounded-xl p-6 font-mono text-sm border border-primary/10 shadow-2xl">
+                <div className="p-6 relative">
+                  {/* Collaborator Cursors */}
+                  {collaborators.map((collab) => (
+                    <CollaboratorCursor
+                      key={collab.id}
+                      collaborator={collab}
+                      isCurrentFile={collab.currentFile === selectedFile}
+                    />
+                  ))}
+                  
+                  <div className="glass-panel rounded-xl p-6 font-mono text-sm border border-primary/10 shadow-2xl relative">
                     <div className="space-y-0.5">
                       {mockCode.split("\n").map((line, i) => (
                         <div

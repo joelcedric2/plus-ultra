@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { ViewMode, DeviceMode } from "../Workspace";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
+import { CollaboratorPresence } from "./CollaboratorPresence";
+import { useSimulatedCollaboration } from "@/hooks/useSimulatedCollaboration";
 import {
   Dialog,
   DialogContent,
@@ -38,6 +40,7 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
   const [supabaseUrl, setSupabaseUrl] = useState("");
   const [supabaseKey, setSupabaseKey] = useState("");
   const [isCloudDialogOpen, setIsCloudDialogOpen] = useState(false);
+  const { collaborators } = useSimulatedCollaboration();
 
   const handleConnectSupabase = () => {
     // Handle Supabase connection here
@@ -265,7 +268,9 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
       </div>
 
       {/* Actions */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-3">
+        <CollaboratorPresence collaborators={collaborators} />
+        <div className="h-6 w-px bg-border/50" />
         <Button variant="ghost" size="sm" className="h-8 w-8 p-0 hover:bg-muted/50 rounded-lg transition-all">
           <Github className="w-4 h-4" />
         </Button>
