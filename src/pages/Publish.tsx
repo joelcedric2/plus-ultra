@@ -22,7 +22,6 @@ const Publish = () => {
       id: "web",
       title: "Publish as Web App",
       description: "Deploy your app to the web instantly with a custom domain",
-      icon: <Globe className="w-12 h-12 text-accent" />,
       features: [
         "Instant deployment",
         "Custom domain support",
@@ -36,13 +35,13 @@ const Publish = () => {
         "Deploy in seconds"
       ],
       docsUrl: "https://docs.lovable.dev/features/deployment",
-      color: "from-blue-500 to-cyan-500"
+      color: "from-blue-500 to-cyan-500",
+      textStyle: "bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent"
     },
     {
       id: "apple",
       title: "Publish to Apple Store",
       description: "Deploy your app to the iOS App Store for iPhone and iPad users",
-      icon: <Apple className="w-12 h-12 text-accent" />,
       features: [
         "Native iOS app generation",
         "TestFlight beta distribution",
@@ -57,13 +56,13 @@ const Publish = () => {
         "Review process (1-3 days)"
       ],
       docsUrl: "https://developer.apple.com/app-store/submissions/",
-      color: "from-gray-700 to-gray-900"
+      color: "from-gray-700 to-gray-900",
+      textStyle: "bg-gradient-to-r from-gray-300 via-gray-100 to-gray-300 bg-clip-text text-transparent font-bold"
     },
     {
       id: "google",
       title: "Publish to Google Play Store",
       description: "Deploy your app to Google Play Store for Android users",
-      icon: <PlayCircle className="w-12 h-12 text-accent" />,
       features: [
         "Native Android app generation",
         "Internal testing tracks",
@@ -78,7 +77,8 @@ const Publish = () => {
         "Review process (1-7 days)"
       ],
       docsUrl: "https://play.google.com/console/about/guides/releasewithconfidence/",
-      color: "from-green-500 to-emerald-600"
+      color: "from-green-500 to-emerald-600",
+      textStyle: "bg-gradient-to-r from-green-400 via-emerald-400 to-green-500 bg-clip-text text-transparent"
     }
   ];
 
@@ -112,10 +112,9 @@ const Publish = () => {
                 onClick={() => setSelectedPlatform(platform.id)}
               >
                 <CardHeader>
-                  <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${platform.color} flex items-center justify-center mb-4 mx-auto`}>
-                    {platform.icon}
-                  </div>
-                  <CardTitle className="text-2xl text-center">{platform.title}</CardTitle>
+                  <CardTitle className={`text-3xl text-center mb-2 ${platform.textStyle}`}>
+                    {platform.title}
+                  </CardTitle>
                   <CardDescription className="text-center">{platform.description}</CardDescription>
                 </CardHeader>
                 
