@@ -105,43 +105,7 @@ export const ChatPane = () => {
           <div className="flex items-center justify-between px-2 pb-1.5">
             <TooltipProvider>
               <div className="flex items-center gap-1">
-                {/* Attach Button */}
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button variant="ghost" size="sm" className="h-8 w-8 p-0 hover:bg-primary/10 rounded-lg transition-all">
-                      <Paperclip className="w-4 h-4 text-muted-foreground hover:text-foreground" />
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>Attach files</p>
-                  </TooltipContent>
-                </Tooltip>
-
-                {/* Voice Button */}
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button variant="ghost" size="sm" onClick={() => setIsRecording(!isRecording)} className={cn("h-8 w-8 p-0 hover:bg-primary/10 rounded-lg transition-all", isRecording && "bg-destructive/20")}>
-                      <Mic className={cn("w-4 h-4 text-muted-foreground", isRecording && "text-destructive")} />
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>{isRecording ? "Stop recording" : "Voice input"}</p>
-                  </TooltipContent>
-                </Tooltip>
-
-                {/* Edit Button */}
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button variant="ghost" size="sm" className="h-8 w-8 p-0 hover:bg-primary/10 rounded-lg transition-all">
-                      <Edit3 className="w-4 h-4 text-muted-foreground hover:text-foreground" />
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>Edit mode</p>
-                  </TooltipContent>
-                </Tooltip>
-
-                {/* More Tools Dropdown */}
+                {/* More Tools Dropdown - Moved to far left */}
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <DropdownMenu>
@@ -187,6 +151,30 @@ export const ChatPane = () => {
                   </TooltipTrigger>
                   <TooltipContent>
                     <p>More tools</p>
+                  </TooltipContent>
+                </Tooltip>
+
+                {/* Voice Button */}
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button variant="ghost" size="sm" onClick={() => setIsRecording(!isRecording)} className={cn("h-8 w-8 p-0 hover:bg-primary/10 rounded-lg transition-all", isRecording && "bg-destructive/20")}>
+                      <Mic className={cn("w-4 h-4 text-muted-foreground", isRecording && "text-destructive")} />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{isRecording ? "Stop recording" : "Voice input"}</p>
+                  </TooltipContent>
+                </Tooltip>
+
+                {/* Attach Button - Moved to where Plus was */}
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button variant="ghost" size="sm" className="h-8 w-8 p-0 hover:bg-primary/10 rounded-lg transition-all">
+                      <Paperclip className="w-4 h-4 text-muted-foreground hover:text-foreground" />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Attach files</p>
                   </TooltipContent>
                 </Tooltip>
 
