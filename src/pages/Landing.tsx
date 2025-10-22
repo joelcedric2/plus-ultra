@@ -25,21 +25,21 @@ const Landing = () => {
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6">
         <div className="max-w-7xl mx-auto text-center">
-          <Badge className="mb-6 bg-accent/10 text-accent border-accent/20 hover:bg-accent/20">
+          <Badge className="mb-6 bg-accent/10 text-accent border-accent/20 hover:bg-accent/20 animate-fade-in">
             <Sparkles className="w-3 h-3 mr-1" />
             Self-debugging App Studio
           </Badge>
           
-          <h1 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
+          <h1 className="text-3xl md:text-5xl font-bold mb-6 text-foreground animate-fade-in [animation-delay:100ms]">
             Build and ship apps now <br className="hidden md:block" />with PlusUltra
           </h1>
           
-          <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto animate-fade-in [animation-delay:200ms]">
             Web and mobile, designed, debugged, and shipped by AI
           </p>
 
           {/* Build Prompt Input */}
-          <div className="max-w-3xl mx-auto mb-8">
+          <div className="max-w-3xl mx-auto mb-8 animate-scale-in [animation-delay:300ms]">
             <div className="relative bg-secondary/50 border border-border/50 rounded-2xl focus-within:border-primary/50 transition-colors">
               <Textarea
                 value={prompt}
@@ -123,7 +123,7 @@ const Landing = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {/* TODO: Replace with actual user projects */}
               {[1, 2, 3].map((i) => (
-                <Card key={i} className="glass-panel hover:shadow-lg transition-shadow cursor-pointer">
+                <Card key={i} className="glass-panel hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer animate-fade-in" style={{animationDelay: `${i * 100}ms`}}>
                   <CardHeader>
                     <CardTitle>Project {i}</CardTitle>
                     <CardDescription>Last edited 2 days ago</CardDescription>
@@ -142,15 +142,15 @@ const Landing = () => {
       {/* Features Section */}
       <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Why PlusUltra?</h2>
             <p className="text-xl text-muted-foreground">Everything you need to build and ship apps</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="glass-panel border-primary/20">
+            <Card className="glass-panel border-primary/20 hover:shadow-2xl hover:scale-105 transition-all duration-300 animate-fade-in [animation-delay:100ms] group">
               <CardHeader>
-                <Zap className="w-10 h-10 text-accent mb-4" />
+                <Zap className="w-10 h-10 text-accent mb-4 group-hover:scale-110 transition-transform duration-300" />
                 <CardTitle>Lightning Fast</CardTitle>
               </CardHeader>
               <CardContent>
@@ -158,9 +158,9 @@ const Landing = () => {
               </CardContent>
             </Card>
 
-            <Card className="glass-panel border-primary/20">
+            <Card className="glass-panel border-primary/20 hover:shadow-2xl hover:scale-105 transition-all duration-300 animate-fade-in [animation-delay:200ms] group">
               <CardHeader>
-                <Shield className="w-10 h-10 text-accent mb-4" />
+                <Shield className="w-10 h-10 text-accent mb-4 group-hover:scale-110 transition-transform duration-300" />
                 <CardTitle>Self-Healing</CardTitle>
               </CardHeader>
               <CardContent>
@@ -168,9 +168,9 @@ const Landing = () => {
               </CardContent>
             </Card>
 
-            <Card className="glass-panel border-primary/20">
+            <Card className="glass-panel border-primary/20 hover:shadow-2xl hover:scale-105 transition-all duration-300 animate-fade-in [animation-delay:300ms] group">
               <CardHeader>
-                <Code className="w-10 h-10 text-accent mb-4" />
+                <Code className="w-10 h-10 text-accent mb-4 group-hover:scale-110 transition-transform duration-300" />
                 <CardTitle>Full Control</CardTitle>
               </CardHeader>
               <CardContent>
@@ -184,7 +184,7 @@ const Landing = () => {
       {/* Community Templates Section */}
       <section className="py-20 px-6 bg-muted/30">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Community Templates</h2>
             <p className="text-xl text-muted-foreground">Clone and customize projects from the community</p>
           </div>
@@ -198,10 +198,10 @@ const Landing = () => {
               { title: "Blog Platform", description: "Modern blog with CMS and markdown support", author: "Community" },
               { title: "AI Chatbot", description: "Conversational AI interface with memory", author: "PlusUltra" },
             ].map((template, i) => (
-              <Card key={i} className="glass-panel hover:shadow-lg transition-all hover:-translate-y-1 cursor-pointer group">
+              <Card key={i} className="glass-panel hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-105 cursor-pointer group animate-fade-in" style={{animationDelay: `${i * 100}ms`}}>
                 <CardHeader>
-                  <div className="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg mb-4 flex items-center justify-center">
-                    <Users className="w-12 h-12 text-primary/40 group-hover:text-accent transition-colors" />
+                  <div className="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg mb-4 flex items-center justify-center group-hover:from-accent/30 group-hover:to-purple/30 transition-all duration-300">
+                    <Users className="w-12 h-12 text-primary/40 group-hover:text-accent group-hover:scale-110 transition-all duration-300" />
                   </div>
                   <CardTitle>{template.title}</CardTitle>
                   <CardDescription>{template.description}</CardDescription>
@@ -209,7 +209,7 @@ const Landing = () => {
                 <CardContent>
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-muted-foreground">by {template.author}</span>
-                    <Button size="sm" variant="ghost" className="group-hover:bg-accent/10 group-hover:text-accent">
+                    <Button size="sm" variant="ghost" className="group-hover:bg-accent/10 group-hover:text-accent transition-all duration-300">
                       Clone
                     </Button>
                   </div>
@@ -220,95 +220,15 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Simple, Transparent Pricing</h2>
-            <p className="text-xl text-muted-foreground">Choose the plan that fits your needs</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {/* Free Tier */}
-            <Card className="glass-panel">
-              <CardHeader>
-                <CardTitle className="text-2xl">Free</CardTitle>
-                <CardDescription className="text-3xl font-bold text-foreground mt-2">
-                  $0<span className="text-base font-normal text-muted-foreground">/month</span>
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3 mb-6">
-                  {["3 projects", "Community support", "Basic templates", "GitHub export"].map((feature) => (
-                    <li key={feature} className="flex items-center gap-2">
-                      <Check className="w-4 h-4 text-accent" />
-                      <span className="text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Button variant="outline" className="w-full">Get Started</Button>
-              </CardContent>
-            </Card>
-
-            {/* Pro Tier */}
-            <Card className="glass-panel border-2 border-accent relative">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                <Badge className="bg-accent text-white">Most Popular</Badge>
-              </div>
-              <CardHeader>
-                <CardTitle className="text-2xl">Pro</CardTitle>
-                <CardDescription className="text-3xl font-bold text-foreground mt-2">
-                  $29<span className="text-base font-normal text-muted-foreground">/month</span>
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3 mb-6">
-                  {["Unlimited projects", "Priority support", "Advanced AI features", "Custom domains", "Team collaboration"].map((feature) => (
-                    <li key={feature} className="flex items-center gap-2">
-                      <Check className="w-4 h-4 text-accent" />
-                      <span className="text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Button className="w-full bg-gradient-to-r from-accent to-purple text-white border-0">
-                  Start Pro Trial
-                </Button>
-              </CardContent>
-            </Card>
-
-            {/* Enterprise Tier */}
-            <Card className="glass-panel">
-              <CardHeader>
-                <CardTitle className="text-2xl">Enterprise</CardTitle>
-                <CardDescription className="text-3xl font-bold text-foreground mt-2">
-                  Custom
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3 mb-6">
-                  {["Everything in Pro", "Dedicated support", "SLA guarantee", "Custom integrations", "On-premise option"].map((feature) => (
-                    <li key={feature} className="flex items-center gap-2">
-                      <Check className="w-4 h-4 text-accent" />
-                      <span className="text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Button variant="outline" className="w-full">Contact Sales</Button>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
       {/* Demo Video Section */}
       <section className="py-20 px-6 bg-muted/30">
         <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">See PlusUltra in Action</h2>
-          <p className="text-xl text-muted-foreground mb-12">Watch how easy it is to build and deploy apps</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-fade-in">See PlusUltra in Action</h2>
+          <p className="text-xl text-muted-foreground mb-12 animate-fade-in [animation-delay:100ms]">Watch how easy it is to build and deploy apps</p>
           
-          <div className="glass-panel rounded-2xl overflow-hidden aspect-video bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+          <div className="glass-panel rounded-2xl overflow-hidden aspect-video bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center animate-scale-in [animation-delay:200ms] hover:shadow-2xl transition-all duration-300">
             <div className="text-center">
-              <div className="w-20 h-20 bg-accent rounded-full flex items-center justify-center mx-auto mb-4 cursor-pointer hover:scale-110 transition-transform">
+              <div className="w-20 h-20 bg-accent rounded-full flex items-center justify-center mx-auto mb-4 cursor-pointer hover:scale-125 transition-all duration-300 animate-pulse">
                 <div className="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-white border-b-8 border-b-transparent ml-1" />
               </div>
               <p className="text-muted-foreground">Demo video coming soon</p>
@@ -319,12 +239,12 @@ const Landing = () => {
 
       {/* Final CTA */}
       <section className="py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center glass-panel rounded-3xl p-12">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">Ready to build something amazing?</h2>
-          <p className="text-xl text-muted-foreground mb-8">Join thousands of developers shipping apps faster</p>
+        <div className="max-w-4xl mx-auto text-center glass-panel rounded-3xl p-12 animate-scale-in hover:shadow-2xl transition-all duration-500">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 animate-fade-in">Ready to build something amazing?</h2>
+          <p className="text-xl text-muted-foreground mb-8 animate-fade-in [animation-delay:100ms]">Join thousands of developers shipping apps faster</p>
           <Button 
             size="lg" 
-            className="bg-gradient-to-r from-accent to-purple text-white border-0 text-lg px-8 py-6 hover:opacity-90"
+            className="bg-gradient-to-r from-accent to-purple text-white border-0 text-lg px-8 py-6 hover:scale-110 hover:shadow-2xl hover:shadow-accent/50 transition-all duration-300 animate-fade-in [animation-delay:200ms]"
             onClick={() => navigate("/workspace")}
           >
             <Rocket className="w-5 h-5 mr-2" />
