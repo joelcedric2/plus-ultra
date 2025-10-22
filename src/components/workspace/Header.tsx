@@ -50,8 +50,8 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
       {/* Logo and Project Name */}
         <div className="flex items-center gap-4">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl flex items-center justify-center">
-            <img src={logoImage} alt="PlusUltra Logo" className="w-9 h-9 object-contain" />
+          <div className="w-12 h-12 rounded-xl flex items-center justify-center">
+            <img src={logoImage} alt="PlusUltra Logo" className="w-12 h-12 object-contain" />
           </div>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
