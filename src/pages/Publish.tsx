@@ -36,7 +36,7 @@ const Publish = () => {
       ],
       docsUrl: "https://docs.lovable.dev/features/deployment",
       color: "from-blue-500 to-cyan-500",
-      textStyle: "bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent"
+      textStyle: "bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent font-bold drop-shadow-lg"
     },
     {
       id: "apple",
@@ -57,7 +57,7 @@ const Publish = () => {
       ],
       docsUrl: "https://developer.apple.com/app-store/submissions/",
       color: "from-gray-700 to-gray-900",
-      textStyle: "bg-gradient-to-r from-gray-300 via-gray-100 to-gray-300 bg-clip-text text-transparent font-bold"
+      textStyle: "text-foreground font-bold text-3xl drop-shadow-[0_2px_8px_rgba(255,255,255,0.3)]"
     },
     {
       id: "google",
@@ -78,7 +78,7 @@ const Publish = () => {
       ],
       docsUrl: "https://play.google.com/console/about/guides/releasewithconfidence/",
       color: "from-green-500 to-emerald-600",
-      textStyle: "bg-gradient-to-r from-green-400 via-emerald-400 to-green-500 bg-clip-text text-transparent"
+      textStyle: "bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent font-bold drop-shadow-lg"
     }
   ];
 
