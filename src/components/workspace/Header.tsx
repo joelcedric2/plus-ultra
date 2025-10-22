@@ -92,18 +92,18 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
           </DropdownMenu>
         </div>
         <div className="h-6 w-px bg-border/50" />
-        <span className="text-sm text-muted-foreground font-medium">PlusUltra</span>
         <Button
           variant="ghost"
           size="sm"
           onClick={onToggleChat}
-          className="h-8 w-8 p-0 hover:bg-primary/10 rounded-lg transition-all mr-12"
+          className="h-8 w-8 p-0 hover:bg-primary/10 rounded-lg transition-all"
         >
           <PanelLeftClose className={cn(
             "w-4 h-4 text-muted-foreground hover:text-foreground transition-transform",
             isChatCollapsed && "rotate-180"
           )} />
         </Button>
+        <span className="text-sm text-muted-foreground font-medium">PlusUltra</span>
       </div>
 
       {/* View Mode Toggle */}
