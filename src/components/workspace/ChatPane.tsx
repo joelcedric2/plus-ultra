@@ -94,7 +94,7 @@ export const ChatPane = () => {
                   )}
                 >
                   <p className={cn(
-                    "text-sm leading-relaxed whitespace-pre-wrap break-words m-0",
+                    "text-base leading-relaxed whitespace-pre-wrap break-words m-0",
                     message.role === "assistant" && "text-muted-foreground"
                   )}>
                     {message.content}
