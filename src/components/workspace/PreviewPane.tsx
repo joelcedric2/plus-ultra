@@ -44,6 +44,19 @@ export const PreviewPane = ({ deviceMode }: PreviewPaneProps) => {
                     Start building by describing what you want in the chat. Watch your app come to life here in real-time.
                   </p>
                 </div>
+
+                {/* CTA */}
+                <div className="flex items-center justify-center gap-3 pt-4">
+                  <Button
+                    variant="outline"
+                    className="glass-button rounded-xl border-border hover:border-primary/30"
+                  >
+                    View Examples
+                  </Button>
+                  <Button className="bg-gradient-to-r from-accent to-purple hover:opacity-90 text-accent-foreground shadow-lg shadow-accent/20 rounded-xl font-medium">
+                    Start Building
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
