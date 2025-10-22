@@ -49,17 +49,8 @@ export const ChatPane = () => {
   return <div className="h-full flex flex-col bg-background/50 backdrop-blur-xl border-r border-border/30">
       {/* Chat Header */}
       <div className="p-5 border-b border-border/30">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="relative">
-              <div className="w-2.5 h-2.5 rounded-full bg-primary ai-glow" />
-              <div className="absolute inset-0 w-2.5 h-2.5 rounded-full bg-primary animate-ping opacity-75" />
-            </div>
-            <div>
-              <span className="text-sm font-semibold text-foreground">AI Workspace</span>
-              <p className="text-xs text-muted-foreground">Multi-agent orchestration active</p>
-            </div>
-          </div>
+        <div className="flex items-center">
+          <span className="text-2xl font-bold text-foreground">PlusUltra</span>
         </div>
       </div>
 
