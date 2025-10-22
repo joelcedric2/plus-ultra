@@ -63,18 +63,21 @@ export const ChatPane = () => {
               key={message.id}
               className={cn(
                 "flex gap-3 group animate-in fade-in-50 slide-in-from-bottom-3",
-                message.role === "assistant" ? "items-start justify-start" : "items-start justify-end"
+                message.role === "assistant" ? "items-start justify-start flex-col" : "items-start justify-end"
               )}
             >
               {message.role === "assistant" && (
-                <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <img src={logoImage} alt="PlusUltra" className="w-7 h-7 object-contain" />
+                <div className="flex items-center gap-2">
+                  <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <img src={logoImage} alt="PlusUltra" className="w-7 h-7 object-contain" />
+                  </div>
+                  <span className="text-sm font-semibold text-foreground">PlusUltra</span>
                 </div>
               )}
               <div
                 className={cn(
                   "max-w-[80%] space-y-2 overflow-hidden",
-                  message.role === "assistant" ? "mr-auto" : "ml-auto"
+                  message.role === "assistant" ? "mr-auto ml-0" : "ml-auto"
                 )}
               >
                 <div
