@@ -3,7 +3,7 @@ import logoImage from "@/assets/plusultra-logo.png";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { ArrowUp, Sparkles, Loader2, Paperclip, Mic, Edit3, Plus, Bot, Code, Image, FileText } from "lucide-react";
+import { ArrowUp, Sparkles, Loader2, Paperclip, Mic, Edit3, Plus, Bot, UserPlus, Image, FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
@@ -152,10 +152,10 @@ export const ChatPane = () => {
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="start" className="w-56 bg-card/95 backdrop-blur-xl border-border/50 z-50">
                         <DropdownMenuItem className="gap-3 cursor-pointer hover:bg-primary/10 focus:bg-primary/10">
-                          <Code className="w-4 h-4 text-primary" />
+                          <UserPlus className="w-4 h-4 text-primary" />
                           <div>
-                            <div className="font-medium text-sm">Code Snippet</div>
-                            <div className="text-xs text-muted-foreground">Insert code block</div>
+                            <div className="font-medium text-sm">Invite a collaborator</div>
+                            <div className="text-xs text-muted-foreground">Add team member to project</div>
                           </div>
                         </DropdownMenuItem>
                         <DropdownMenuItem className="gap-3 cursor-pointer hover:bg-primary/10 focus:bg-primary/10">
