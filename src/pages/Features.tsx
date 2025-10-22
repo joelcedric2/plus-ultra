@@ -196,7 +196,7 @@ const Features = () => {
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-foreground animate-fade-in [animation-delay:100ms]">
             ⚡️ PlusUltra <br className="hidden md:block" />
             <span className="bg-gradient-to-r from-accent to-purple bg-clip-text text-transparent">
-              Build Apps That Build Themselves
+              Your coding assistant that get smarter there more you build
             </span>
           </h1>
           
