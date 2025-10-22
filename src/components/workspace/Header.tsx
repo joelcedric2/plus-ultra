@@ -199,11 +199,8 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
         </Dialog>
         </div>
 
-        {/* Device & Page Controls - Only show in preview mode */}
-        <div className={cn(
-          "flex items-center gap-2 ml-3 bg-secondary border border-border rounded-xl px-2 py-1 transition-all duration-200",
-          viewMode !== "preview" && "opacity-0 pointer-events-none"
-        )}>
+        {/* Device & Page Controls */}
+        <div className="flex items-center gap-2 ml-3 bg-secondary border border-border rounded-xl px-2 py-1">
           {/* Cycling Screen Size Icon */}
           <Button
             variant="ghost"
