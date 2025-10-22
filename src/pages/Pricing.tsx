@@ -125,12 +125,12 @@ const Pricing = () => {
       {/* Pricing Cards */}
       <section className="py-12 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
             {tiers.map((tier) => (
               <Card 
                 key={tier.name} 
                 className={`glass-panel relative flex flex-col h-full ${
-                  tier.popular ? 'border-2 border-accent shadow-lg scale-105' : ''
+                  tier.popular ? 'border-2 border-accent shadow-lg' : ''
                 }`}
               >
                 {tier.popular && (
