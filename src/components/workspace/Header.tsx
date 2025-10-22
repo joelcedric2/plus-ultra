@@ -1,4 +1,5 @@
 import { Code2, Eye, Github, Share2, Sparkles, Cloud, PanelLeftClose, Monitor, Smartphone, Tablet, ArrowUpRight, RotateCw } from "lucide-react";
+import logoImage from "@/assets/plusultra-logo.png";
 import { Button } from "@/components/ui/button";
 import { ViewMode, DeviceMode } from "../Workspace";
 import { cn } from "@/lib/utils";
@@ -47,8 +48,8 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
       {/* Logo and Project Name */}
         <div className="flex items-center gap-4">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-primary/10 border border-border flex items-center justify-center">
-            <Sparkles className="w-5 h-5 text-primary" />
+          <div className="w-9 h-9 rounded-xl flex items-center justify-center">
+            <img src={logoImage} alt="PlusUltra Logo" className="w-9 h-9 object-contain" />
           </div>
           <span className="font-bold text-xl text-foreground">
             Untitled Project
