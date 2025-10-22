@@ -112,8 +112,8 @@ export const ChatPane = () => {
 
       {/* Input Area */}
       <div className="p-5 border-t border-border/30 bg-card/30 backdrop-blur-xl">
-        <div className="space-y-3">
-          {/* Text Input Field - Full Width */}
+        <div className="relative bg-secondary/50 border border-border/50 rounded-xl focus-within:border-primary/50 transition-colors">
+          {/* Text Input Field */}
           <Textarea value={input} onChange={e => {
           setInput(e.target.value);
           // Auto-resize
@@ -124,18 +124,18 @@ export const ChatPane = () => {
             e.preventDefault();
             handleSend();
           }
-        }} placeholder="Describe your app or feature..." rows={1} className="w-full resize-none bg-secondary/50 border-border/50 focus:border-primary/50 rounded-xl py-3 px-4 placeholder:text-muted-foreground/50 max-h-[200px] overflow-y-auto" style={{
+        }} placeholder="Describe your app or feature..." rows={1} className="w-full resize-none bg-transparent border-0 focus-visible:ring-0 focus-visible:ring-offset-0 rounded-xl py-3 px-4 pr-20 placeholder:text-muted-foreground/50 max-h-[200px] overflow-y-auto" style={{
           height: 'auto'
         }} />
 
-          {/* Bottom Row: Tools and Actions */}
-          <div className="flex items-center justify-between">
+          {/* Bottom Row: Tools and Actions - Inside the text field container */}
+          <div className="flex items-center justify-between px-2 pb-2">
             <TooltipProvider>
               <div className="flex items-center gap-1">
                 {/* Attach Button */}
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button variant="ghost" size="sm" className="h-9 w-9 p-0 hover:bg-primary/10 rounded-lg transition-all">
+                    <Button variant="ghost" size="sm" className="h-8 w-8 p-0 hover:bg-primary/10 rounded-lg transition-all">
                       <Paperclip className="w-4 h-4 text-muted-foreground hover:text-foreground" />
                     </Button>
                   </TooltipTrigger>
@@ -147,7 +147,7 @@ export const ChatPane = () => {
                 {/* Voice Button */}
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button variant="ghost" size="sm" onClick={() => setIsRecording(!isRecording)} className={cn("h-9 w-9 p-0 hover:bg-primary/10 rounded-lg transition-all", isRecording && "bg-destructive/20")}>
+                    <Button variant="ghost" size="sm" onClick={() => setIsRecording(!isRecording)} className={cn("h-8 w-8 p-0 hover:bg-primary/10 rounded-lg transition-all", isRecording && "bg-destructive/20")}>
                       <Mic className={cn("w-4 h-4 text-muted-foreground", isRecording && "text-destructive")} />
                     </Button>
                   </TooltipTrigger>
@@ -159,7 +159,7 @@ export const ChatPane = () => {
                 {/* Edit Button */}
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button variant="ghost" size="sm" className="h-9 w-9 p-0 hover:bg-primary/10 rounded-lg transition-all">
+                    <Button variant="ghost" size="sm" className="h-8 w-8 p-0 hover:bg-primary/10 rounded-lg transition-all">
                       <Edit3 className="w-4 h-4 text-muted-foreground hover:text-foreground" />
                     </Button>
                   </TooltipTrigger>
@@ -173,7 +173,7 @@ export const ChatPane = () => {
                   <TooltipTrigger asChild>
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" size="sm" className="h-9 w-9 p-0 hover:bg-primary/10 rounded-lg transition-all">
+                        <Button variant="ghost" size="sm" className="h-8 w-8 p-0 hover:bg-primary/10 rounded-lg transition-all">
                           <Plus className="w-4 h-4 text-muted-foreground hover:text-foreground" />
                         </Button>
                       </DropdownMenuTrigger>
