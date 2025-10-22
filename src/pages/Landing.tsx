@@ -30,8 +30,8 @@ const Landing = () => {
             The Self-Healing App Studio
           </Badge>
           
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-foreground">
-            Build apps with no code or low code
+          <h1 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
+            Build and ship apps now with PlusUltra
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto">
