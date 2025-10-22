@@ -1,4 +1,5 @@
 import { useState } from "react";
+import logoImage from "@/assets/plusultra-logo.png";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -66,8 +67,8 @@ export const ChatPane = () => {
               )}
             >
               {message.role === "assistant" && (
-                <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-accent to-purple flex items-center justify-center flex-shrink-0 shadow-lg shadow-accent/20">
-                  <Sparkles className="w-4 h-4 text-white" />
+                <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <img src={logoImage} alt="PlusUltra" className="w-7 h-7 object-contain" />
                 </div>
               )}
               <div
@@ -102,8 +103,8 @@ export const ChatPane = () => {
           ))}
           {isProcessing && (
             <div className="flex gap-3 items-start animate-in fade-in-50">
-              <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-accent to-purple flex items-center justify-center shadow-lg shadow-accent/20">
-                <Loader2 className="w-4 h-4 text-white animate-spin" />
+              <div className="w-7 h-7 rounded-lg flex items-center justify-center">
+                <img src={logoImage} alt="PlusUltra" className="w-7 h-7 object-contain animate-pulse" />
               </div>
               <div className="flex-1">
                 <p className="text-sm text-muted-foreground">Processing your request...</p>
