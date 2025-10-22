@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { CollaboratorPresence } from "./CollaboratorPresence";
 import { useSimulatedCollaboration } from "@/hooks/useSimulatedCollaboration";
+import { Link } from "react-router-dom";
 import {
   Dialog,
   DialogContent,
@@ -53,9 +54,9 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
       {/* Logo and Project Name */}
         <div className="flex items-center gap-4">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-xl flex items-center justify-center">
+          <Link to="/" className="w-12 h-12 rounded-xl flex items-center justify-center hover:opacity-80 transition-opacity cursor-pointer">
             <img src={logoImage} alt="PlusUltra Logo" className="w-12 h-12 object-contain" />
-          </div>
+          </Link>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button className="flex items-center gap-2 hover:opacity-80 transition-opacity">
