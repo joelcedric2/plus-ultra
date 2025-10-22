@@ -103,7 +103,6 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
             isChatCollapsed && "rotate-180"
           )} />
         </Button>
-        <span className="text-sm text-muted-foreground font-medium">PlusUltra</span>
       </div>
 
       {/* View Mode Toggle */}
