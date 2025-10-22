@@ -124,7 +124,7 @@ export const ChatPane = () => {
             e.preventDefault();
             handleSend();
           }
-        }} placeholder="Describe your app or feature..." rows={1} className="w-full resize-none bg-transparent border-0 focus-visible:ring-0 focus-visible:ring-offset-0 rounded-xl py-2 px-4 pr-20 placeholder:text-muted-foreground/50 max-h-[200px] overflow-y-auto" style={{
+        }} placeholder="Describe your app or feature..." rows={1} className="w-full resize-none bg-transparent border-0 focus-visible:ring-0 focus-visible:ring-offset-0 rounded-xl py-1 px-4 pr-20 placeholder:text-muted-foreground/50 max-h-[200px] overflow-y-auto leading-tight min-h-[32px]" style={{
           height: 'auto'
         }} />
 
