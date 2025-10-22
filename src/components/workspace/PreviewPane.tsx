@@ -31,7 +31,7 @@ export const PreviewPane = ({ deviceMode }: PreviewPaneProps) => {
               <div className="space-y-8 max-w-md">
                 {/* Logo */}
                 <div className="inline-flex">
-                  <div className="w-24 h-24 rounded-3xl bg-primary/10 border border-border flex items-center justify-center overflow-hidden">
+                  <div className="w-40 h-40 rounded-3xl bg-primary/10 border border-border flex items-center justify-center overflow-hidden">
                     <img src={logoImage} alt="Plus Ultra Logo" className="w-full h-full object-contain p-3" />
                   </div>
                 </div>
