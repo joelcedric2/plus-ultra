@@ -70,7 +70,7 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
       </div>
 
       {/* View Mode Toggle */}
-      <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-1">
+      <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-1 ml-8">
         <div className="flex items-center gap-0.5">
           <Button
             variant="ghost"
