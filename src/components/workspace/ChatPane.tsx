@@ -48,13 +48,6 @@ export const ChatPane = () => {
     }, 1500);
   };
   return <div className="h-full flex flex-col bg-background/50 backdrop-blur-xl border-r border-border/30">
-      {/* Chat Header */}
-      <div className="p-5 border-b border-border/30">
-        <div className="flex items-center">
-          <span className="text-2xl font-bold text-foreground">PlusUltra</span>
-        </div>
-      </div>
-
       {/* Messages */}
       <ScrollArea className="flex-1 p-5">
         <div className="space-y-6">
