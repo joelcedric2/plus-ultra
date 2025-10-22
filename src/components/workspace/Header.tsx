@@ -65,10 +65,9 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
             <DropdownMenuContent align="start" className="w-64 bg-card border-border z-50 p-3">
               <div className="mb-3">
                 <div className="flex items-center justify-between text-xs text-muted-foreground mb-2">
-                  <span>Tokens Used</span>
-                  <span>750 / 1000</span>
+                  <span>66.2 tokens left</span>
                 </div>
-                <Progress value={75} className="h-2" />
+                <Progress value={66} className="h-2" />
               </div>
               <DropdownMenuSeparator className="bg-border/50 mb-2" />
               <DropdownMenuItem className="gap-3 cursor-pointer hover:bg-primary/10 focus:bg-primary/10">
