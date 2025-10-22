@@ -51,62 +51,35 @@ export const ChatPane = () => {
       {/* Messages */}
       <ScrollArea className="flex-1 p-5">
         <div className="space-y-6">
-          {messages.map((message) => (
-            <div
-              key={message.id}
-              className={cn(
-                "flex gap-3 group animate-in fade-in-50 slide-in-from-bottom-3",
-                message.role === "assistant" ? "items-start justify-start flex-col" : "items-start justify-end"
-              )}
-            >
-              {message.role === "assistant" && (
-                <div className="flex items-center gap-2">
+          {messages.map(message => <div key={message.id} className={cn("flex gap-3 group animate-in fade-in-50 slide-in-from-bottom-3", message.role === "assistant" ? "items-start justify-start flex-col" : "items-start justify-end")}>
+              {message.role === "assistant" && <div className="flex items-center gap-2">
                   <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0">
                     <img src={logoImage} alt="PlusUltra" className="w-7 h-7 object-contain" />
                   </div>
                   <span className="text-sm font-semibold text-foreground">PlusUltra</span>
-                </div>
-              )}
-              <div
-                className={cn(
-                  "max-w-[80%] space-y-2 overflow-hidden",
-                  message.role === "assistant" ? "mr-auto ml-0" : "ml-auto"
-                )}
-              >
-                <div
-                  className={cn(
-                    "prose prose-sm max-w-none rounded-xl px-4 py-3",
-                    message.role === "user" 
-                      ? "bg-secondary/50 border border-border/50"
-                      : "bg-muted/50 border border-border/30"
-                  )}
-                >
-                  <p className={cn(
-                    "text-base leading-relaxed whitespace-pre-wrap break-words m-0",
-                    message.role === "assistant" && "text-muted-foreground"
-                  )}>
+                </div>}
+              <div className={cn("max-w-[80%] space-y-2 overflow-hidden", message.role === "assistant" ? "mr-auto ml-0" : "ml-auto")}>
+                <div className={cn("prose prose-sm max-w-none rounded-xl px-4 py-3", message.role === "user" ? "bg-secondary/50 border border-border/50" : "bg-muted/50 border border-border/30")}>
+                  <p className={cn("text-base leading-relaxed whitespace-pre-wrap break-words m-0", message.role === "assistant" && "text-muted-foreground")}>
                     {message.content}
                   </p>
                 </div>
-                <div className={cn(
-                  "flex items-center gap-2 text-xs text-muted-foreground",
-                  message.role === "user" && "justify-end"
-                )}>
-                  <span>{message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                <div className={cn("flex items-center gap-2 text-xs text-muted-foreground", message.role === "user" && "justify-end")}>
+                  <span>{message.timestamp.toLocaleTimeString([], {
+                  hour: '2-digit',
+                  minute: '2-digit'
+                })}</span>
                 </div>
               </div>
-            </div>
-          ))}
-          {isProcessing && (
-            <div className="flex gap-3 items-start animate-in fade-in-50">
+            </div>)}
+          {isProcessing && <div className="flex gap-3 items-start animate-in fade-in-50">
               <div className="w-7 h-7 rounded-lg flex items-center justify-center">
                 <img src={logoImage} alt="PlusUltra" className="w-7 h-7 object-contain animate-pulse" />
               </div>
               <div className="flex-1">
                 <p className="text-sm text-muted-foreground">Processing your request...</p>
               </div>
-            </div>
-          )}
+            </div>}
         </div>
       </ScrollArea>
 
@@ -188,8 +161,8 @@ export const ChatPane = () => {
                         <DropdownMenuItem className="gap-3 cursor-pointer hover:bg-primary/10 focus:bg-primary/10">
                           <Image className="w-4 h-4 text-primary" />
                           <div>
-                            <div className="font-medium text-sm">Generate Image</div>
-                            <div className="text-xs text-muted-foreground">AI image generation</div>
+                            <div className="font-medium text-sm">Generate Logo</div>
+                            <div className="text-xs text-muted-foreground">AI logo generation</div>
                           </div>
                         </DropdownMenuItem>
                         <DropdownMenuItem className="gap-3 cursor-pointer hover:bg-primary/10 focus:bg-primary/10">
