@@ -35,6 +35,13 @@ export const LandingHeader = () => {
             </Link>
           </Button>
 
+          {/* Contact Link */}
+          <Button variant="ghost" asChild>
+            <Link to="/contact" className="text-foreground hover:text-accent">
+              Contact
+            </Link>
+          </Button>
+
           {/* GitHub Repository Link */}
           <Button variant="ghost" size="icon" asChild>
             <a 
