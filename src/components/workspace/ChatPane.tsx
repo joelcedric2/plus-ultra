@@ -124,12 +124,12 @@ export const ChatPane = () => {
             e.preventDefault();
             handleSend();
           }
-        }} placeholder="Describe your app or feature..." rows={1} className="w-full resize-none bg-transparent border-0 focus-visible:ring-0 focus-visible:ring-offset-0 rounded-xl py-3 px-4 pr-20 placeholder:text-muted-foreground/50 max-h-[200px] overflow-y-auto" style={{
+        }} placeholder="Describe your app or feature..." rows={1} className="w-full resize-none bg-transparent border-0 focus-visible:ring-0 focus-visible:ring-offset-0 rounded-xl py-2 px-4 pr-20 placeholder:text-muted-foreground/50 max-h-[200px] overflow-y-auto" style={{
           height: 'auto'
         }} />
 
           {/* Bottom Row: Tools and Actions - Inside the text field container */}
-          <div className="flex items-center justify-between px-2 pb-2">
+          <div className="flex items-center justify-between px-2 pb-1.5">
             <TooltipProvider>
               <div className="flex items-center gap-1">
                 {/* Attach Button */}
