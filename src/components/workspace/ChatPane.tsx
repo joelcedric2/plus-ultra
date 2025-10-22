@@ -1,19 +1,31 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import logoImage from "@/assets/plusultra-logo.png";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { ArrowUp, Sparkles, Loader2, Paperclip, Mic, Edit3, Plus, Bot, UserPlus, Image, FileText } from "lucide-react";
+import { ArrowUp, Sparkles, Loader2, Paperclip, Mic, Edit3, Plus, Bot, UserPlus, Image, FileText, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { useToast } from "@/hooks/use-toast";
+
+interface AttachedFile {
+  id: string;
+  file: File;
+  preview?: string;
+  type: string;
+}
+
 interface Message {
   id: string;
   role: "user" | "assistant";
   content: string;
   timestamp: Date;
+  attachments?: AttachedFile[];
 }
 export const ChatPane = () => {
+  const { toast } = useToast();
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [messages, setMessages] = useState<Message[]>([{
     id: "1",
     role: "assistant",
@@ -24,16 +36,78 @@ export const ChatPane = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
   const [projectManagerEnabled, setProjectManagerEnabled] = useState(true);
+  const [attachedFiles, setAttachedFiles] = useState<AttachedFile[]>([]);
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files || []);
+    const maxSize = 20 * 1024 * 1024; // 20MB
+    const maxFiles = 10;
+
+    if (attachedFiles.length + files.length > maxFiles) {
+      toast({
+        title: "Too many files",
+        description: `You can only attach up to ${maxFiles} files at once.`,
+        variant: "destructive"
+      });
+      return;
+    }
+
+    const validFiles: AttachedFile[] = [];
+    
+    files.forEach(file => {
+      if (file.size > maxSize) {
+        toast({
+          title: "File too large",
+          description: `${file.name} exceeds the 20MB limit.`,
+          variant: "destructive"
+        });
+        return;
+      }
+
+      const attachedFile: AttachedFile = {
+        id: `${Date.now()}-${Math.random()}`,
+        file,
+        type: file.type
+      };
+
+      // Generate preview for images
+      if (file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          attachedFile.preview = e.target?.result as string;
+          setAttachedFiles(prev => [...prev]);
+        };
+        reader.readAsDataURL(file);
+      }
+
+      validFiles.push(attachedFile);
+    });
+
+    setAttachedFiles(prev => [...prev, ...validFiles]);
+    
+    // Reset input
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
+
+  const removeAttachedFile = (fileId: string) => {
+    setAttachedFiles(prev => prev.filter(f => f.id !== fileId));
+  };
+
   const handleSend = () => {
-    if (!input.trim()) return;
+    if (!input.trim() && attachedFiles.length === 0) return;
+    
     const newMessage: Message = {
       id: Date.now().toString(),
       role: "user",
-      content: input,
-      timestamp: new Date()
+      content: input || "Shared files",
+      timestamp: new Date(),
+      attachments: attachedFiles.length > 0 ? [...attachedFiles] : undefined
     };
+    
     setMessages(prev => [...prev, newMessage]);
     setInput("");
+    setAttachedFiles([]);
     setIsProcessing(true);
 
     // Simulate AI response
@@ -60,6 +134,26 @@ export const ChatPane = () => {
                 </div>}
               <div className={cn("max-w-[80%] space-y-2 overflow-hidden", message.role === "assistant" ? "mr-auto ml-0" : "ml-auto")}>
                 <div className={cn("prose prose-sm max-w-none rounded-xl px-4 py-3", message.role === "user" ? "bg-secondary/50 border border-border/50" : "bg-muted/50 border border-border/30")}>
+                  {message.attachments && message.attachments.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {message.attachments.map(attachment => (
+                        <div key={attachment.id} className="relative group">
+                          {attachment.preview ? (
+                            <img 
+                              src={attachment.preview} 
+                              alt={attachment.file.name}
+                              className="max-w-[200px] max-h-[200px] rounded-lg object-cover border border-border"
+                            />
+                          ) : (
+                            <div className="flex items-center gap-2 px-3 py-2 bg-muted rounded-lg border border-border">
+                              <FileText className="w-4 h-4 text-muted-foreground" />
+                              <span className="text-sm truncate max-w-[150px]">{attachment.file.name}</span>
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
                   <p className={cn("text-base leading-relaxed whitespace-pre-wrap break-words m-0", message.role === "assistant" && "text-muted-foreground")}>
                     {message.content}
                   </p>
@@ -85,6 +179,46 @@ export const ChatPane = () => {
 
       {/* Input Area */}
       <div className="p-5 border-t border-border/30 bg-card/30 backdrop-blur-xl">
+        {/* Attached Files Preview */}
+        {attachedFiles.length > 0 && (
+          <div className="mb-3 flex flex-wrap gap-2">
+            {attachedFiles.map(file => (
+              <div key={file.id} className="relative group">
+                {file.preview ? (
+                  <div className="relative">
+                    <img 
+                      src={file.preview} 
+                      alt={file.file.name}
+                      className="w-20 h-20 rounded-lg object-cover border border-border"
+                    />
+                    <Button
+                      size="sm"
+                      variant="destructive"
+                      className="absolute -top-2 -right-2 h-5 w-5 p-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                      onClick={() => removeAttachedFile(file.id)}
+                    >
+                      <X className="w-3 h-3" />
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-2 px-3 py-2 bg-muted rounded-lg border border-border group-hover:border-primary/50 transition-colors">
+                    <FileText className="w-4 h-4 text-muted-foreground" />
+                    <span className="text-sm truncate max-w-[150px]">{file.file.name}</span>
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      className="h-5 w-5 p-0 ml-2"
+                      onClick={() => removeAttachedFile(file.id)}
+                    >
+                      <X className="w-3 h-3" />
+                    </Button>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+        
         <div className="relative bg-secondary/50 border border-border/50 rounded-xl focus-within:border-primary/50 transition-colors">
           {/* Text Input Field */}
           <Textarea value={input} onChange={e => {
@@ -169,14 +303,29 @@ export const ChatPane = () => {
                 {/* Attach Button - Moved to where Plus was */}
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button variant="ghost" size="sm" className="h-8 w-8 p-0 hover:bg-primary/10 rounded-lg transition-all">
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      className="h-8 w-8 p-0 hover:bg-primary/10 rounded-lg transition-all"
+                      onClick={() => fileInputRef.current?.click()}
+                    >
                       <Paperclip className="w-4 h-4 text-muted-foreground hover:text-foreground" />
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent>
-                    <p>Attach files</p>
+                    <p>Attach files (images, PDFs, screenshots)</p>
                   </TooltipContent>
                 </Tooltip>
+                
+                {/* Hidden File Input */}
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  multiple
+                  accept="image/*,.pdf,.svg,.doc,.docx"
+                  className="hidden"
+                  onChange={handleFileSelect}
+                />
 
                 {/* Status Indicators */}
                 {projectManagerEnabled && <div className="flex items-center gap-1.5 ml-2 px-2 text-xs text-primary">
@@ -190,7 +339,12 @@ export const ChatPane = () => {
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button onClick={handleSend} disabled={!input.trim() || isProcessing} size="sm" className="h-8 w-8 p-0 bg-gradient-to-r from-accent to-purple hover:opacity-90 disabled:opacity-50 text-accent-foreground shadow-lg shadow-accent/20 rounded-lg transition-all">
+                  <Button 
+                    onClick={handleSend} 
+                    disabled={(!input.trim() && attachedFiles.length === 0) || isProcessing} 
+                    size="sm" 
+                    className="h-8 w-8 p-0 bg-gradient-to-r from-accent to-purple hover:opacity-90 disabled:opacity-50 text-accent-foreground shadow-lg shadow-accent/20 rounded-lg transition-all"
+                  >
                     <ArrowUp className="w-4 h-4" />
                   </Button>
                 </TooltipTrigger>
