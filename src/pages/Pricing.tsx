@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { LandingHeader } from "@/components/landing/LandingHeader";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,10 +7,13 @@ import { Check, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Pricing = () => {
+  const [billingPeriod, setBillingPeriod] = useState<"monthly" | "yearly">("monthly");
+  
   const tiers = [
     {
       name: "Free",
-      price: "$0",
+      monthlyPrice: "$0",
+      yearlyPrice: "$0",
       period: "/month",
       tokens: "100 tokens/month",
       sessions: "~20 sessions/month for small apps",
@@ -29,9 +33,10 @@ const Pricing = () => {
     },
     {
       name: "Starter",
-      price: "$25",
+      monthlyPrice: "$25",
+      yearlyPrice: "$20",
       period: "/month",
-      annualPrice: "$20/month billed annually",
+      yearlyTotal: "$240/year",
       tokens: "250 tokens",
       sessions: "~100 builds/edits/month",
       features: [
@@ -53,9 +58,10 @@ const Pricing = () => {
     },
     {
       name: "Pro",
-      price: "$200",
+      monthlyPrice: "$200",
+      yearlyPrice: "$160",
       period: "/month",
-      annualPrice: "$160/month billed annually",
+      yearlyTotal: "$1,920/year",
       tokens: "500 tokens/month",
       sessions: "~200+ sessions/month",
       features: [
@@ -78,7 +84,8 @@ const Pricing = () => {
     },
     {
       name: "Enterprise",
-      price: "Custom",
+      monthlyPrice: "Custom",
+      yearlyPrice: "Custom",
       period: "",
       tokens: "Unlimited tokens (fair use)",
       sessions: "TCI included",
@@ -119,6 +126,27 @@ const Pricing = () => {
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
             From solo builders to enterprise teams, we have a plan for everyone
           </p>
+
+          {/* Billing Toggle */}
+          <div className="flex items-center justify-center gap-4 mb-8">
+            <span className={`text-lg ${billingPeriod === 'monthly' ? 'text-foreground font-semibold' : 'text-muted-foreground'}`}>
+              Monthly
+            </span>
+            <button
+              onClick={() => setBillingPeriod(billingPeriod === 'monthly' ? 'yearly' : 'monthly')}
+              className="relative w-14 h-7 bg-muted rounded-full transition-colors hover:bg-muted/80 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+            >
+              <span
+                className={`absolute top-1 left-1 w-5 h-5 bg-accent rounded-full transition-transform duration-200 ease-in-out ${
+                  billingPeriod === 'yearly' ? 'translate-x-7' : 'translate-x-0'
+                }`}
+              />
+            </button>
+            <span className={`text-lg ${billingPeriod === 'yearly' ? 'text-foreground font-semibold' : 'text-muted-foreground'}`}>
+              Yearly
+              <Badge className="ml-2 bg-accent/20 text-accent border-0">Save 20%</Badge>
+            </span>
+          </div>
         </div>
       </section>
 
@@ -142,11 +170,13 @@ const Pricing = () => {
                 <CardHeader className="pb-4">
                   <CardTitle className="text-2xl">{tier.name}</CardTitle>
                   <div className="mt-4">
-                    <span className="text-4xl font-bold text-foreground">{tier.price}</span>
+                    <span className="text-4xl font-bold text-foreground">
+                      {billingPeriod === 'monthly' ? tier.monthlyPrice : tier.yearlyPrice}
+                    </span>
                     <span className="text-muted-foreground">{tier.period}</span>
                   </div>
-                  {tier.annualPrice && (
-                    <p className="text-sm text-muted-foreground mt-2">{tier.annualPrice}</p>
+                  {billingPeriod === 'yearly' && tier.yearlyTotal && (
+                    <p className="text-sm text-muted-foreground mt-2">{tier.yearlyTotal}</p>
                   )}
                   <div className="mt-4 space-y-1">
                     <p className="text-sm font-semibold text-accent">{tier.tokens}</p>
