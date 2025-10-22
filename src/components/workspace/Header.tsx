@@ -167,7 +167,7 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
 
         {/* Device & Page Controls - Only show in preview mode */}
         {viewMode === "preview" && (
-          <div className="flex items-center gap-2 ml-3">
+          <div className="flex items-center gap-2 ml-3 bg-secondary border border-border rounded-xl px-2 py-1">
             {/* Cycling Screen Size Icon */}
             <Button
               variant="ghost"
@@ -178,7 +178,7 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
                 const nextIndex = (currentIndex + 1) % modes.length;
                 setDeviceMode(modes[nextIndex]);
               }}
-              className="h-8 w-8 p-0 hover:bg-muted/50 rounded-lg transition-all"
+              className="h-7 w-7 p-0 hover:bg-card/50 rounded-lg transition-all"
             >
               {deviceMode === "mobile" && <Smartphone className="w-3.5 h-3.5" />}
               {deviceMode === "tablet" && <Tablet className="w-3.5 h-3.5" />}
@@ -194,7 +194,7 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="h-8 px-2 hover:bg-muted/50 rounded-lg text-xs font-medium"
+                  className="h-7 px-2 hover:bg-card/50 rounded-lg text-xs font-medium"
                 >
                   home
                 </Button>
@@ -207,14 +207,14 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
             </DropdownMenu>
 
             {/* Spacer */}
-            <div className="w-4" />
+            <div className="w-2" />
 
             {/* Open in New Window */}
             <Button
               variant="ghost"
               size="sm"
               onClick={() => window.open(window.location.href, '_blank')}
-              className="h-8 w-8 p-0 hover:bg-muted/50 rounded-lg transition-all"
+              className="h-7 w-7 p-0 hover:bg-card/50 rounded-lg transition-all"
             >
               <ArrowUpRight className="w-3.5 h-3.5" />
             </Button>
@@ -224,7 +224,7 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
               variant="ghost"
               size="sm"
               onClick={() => window.location.reload()}
-              className="h-8 w-8 p-0 hover:bg-muted/50 rounded-lg transition-all"
+              className="h-7 w-7 p-0 hover:bg-card/50 rounded-lg transition-all"
             >
               <RotateCw className="w-3.5 h-3.5" />
             </Button>
