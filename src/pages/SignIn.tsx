@@ -132,7 +132,7 @@ const SignIn = () => {
           <div className="space-y-3">
             <Button
               variant="outline"
-              className="w-full h-11"
+              className="w-full h-11 hover:bg-muted hover:text-foreground"
               onClick={handleGoogleSignIn}
             >
               <Mail className="w-5 h-5 mr-2" />
@@ -140,7 +140,7 @@ const SignIn = () => {
             </Button>
             <Button
               variant="outline"
-              className="w-full h-11"
+              className="w-full h-11 hover:bg-muted hover:text-foreground"
               onClick={handleGithubSignIn}
             >
               <Github className="w-5 h-5 mr-2" />
