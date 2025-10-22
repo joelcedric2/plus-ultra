@@ -3,7 +3,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { 
+import logo from "@/assets/plusultra-logo.png";
+import {
   Sparkles, 
   Zap, 
   Shield, 
@@ -193,8 +194,9 @@ const Features = () => {
             The Self-Debugging App Studio
           </Badge>
           
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-foreground animate-fade-in [animation-delay:100ms]">
-            ⚡️ PlusUltra <br className="hidden md:block" />
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-foreground animate-fade-in [animation-delay:100ms] flex items-center justify-center gap-4">
+            <img src={logo} alt="PlusUltra" className="h-12 md:h-16" />
+            PlusUltra <br className="hidden md:block" />
             <span className="bg-gradient-to-r from-accent to-purple bg-clip-text text-transparent">
               Your coding assistant that get smarter there more you build
             </span>
