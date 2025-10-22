@@ -51,11 +51,11 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
             <Sparkles className="w-5 h-5 text-primary" />
           </div>
           <span className="font-bold text-xl text-foreground">
-            PlusUltra
+            Untitled Project
           </span>
         </div>
         <div className="h-6 w-px bg-border/50" />
-        <span className="text-sm text-muted-foreground font-medium">Untitled Project</span>
+        <span className="text-sm text-muted-foreground font-medium">PlusUltra</span>
         <Button
           variant="ghost"
           size="sm"
