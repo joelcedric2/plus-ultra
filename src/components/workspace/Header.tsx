@@ -96,7 +96,7 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
           variant="ghost"
           size="sm"
           onClick={onToggleChat}
-          className="h-8 w-8 p-0 hover:bg-primary/10 rounded-lg transition-all"
+          className="h-8 w-8 p-0 hover:bg-muted/50 rounded-lg transition-all"
         >
           <PanelLeftClose className={cn(
             "w-4 h-4 text-muted-foreground hover:text-foreground transition-transform",
@@ -142,9 +142,7 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
             <Button
               variant="ghost"
               size="sm"
-              className={cn(
-                "gap-1.5 rounded-lg transition-all duration-200 hover:bg-muted/50 h-8 w-8 p-0"
-              )}
+              className="gap-1.5 rounded-lg transition-all h-8 w-8 p-0 hover:bg-muted/50"
             >
               <Cloud className="w-3.5 h-3.5" />
             </Button>
@@ -214,7 +212,7 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
                 const nextIndex = (currentIndex + 1) % modes.length;
                 setDeviceMode(modes[nextIndex]);
               }}
-              className="h-7 w-7 p-0 hover:bg-card/50 rounded-lg transition-all"
+              className="h-8 w-8 p-0 hover:bg-muted/50 rounded-lg transition-all"
             >
               {deviceMode === "mobile" && <Smartphone className="w-3.5 h-3.5" />}
               {deviceMode === "tablet" && <Tablet className="w-3.5 h-3.5" />}
@@ -230,7 +228,7 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="h-7 px-2 hover:bg-card/50 rounded-lg text-xs font-medium"
+                  className="h-8 px-2 hover:bg-muted/50 rounded-lg text-xs font-medium"
                 >
                   home
                 </Button>
@@ -250,7 +248,7 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
               variant="ghost"
               size="sm"
               onClick={() => window.open(window.location.href, '_blank')}
-              className="h-7 w-7 p-0 hover:bg-card/50 rounded-lg transition-all"
+              className="h-8 w-8 p-0 hover:bg-muted/50 rounded-lg transition-all"
             >
               <ArrowUpRight className="w-3.5 h-3.5" />
             </Button>
@@ -260,7 +258,7 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
               variant="ghost"
               size="sm"
               onClick={() => window.location.reload()}
-              className="h-7 w-7 p-0 hover:bg-card/50 rounded-lg transition-all"
+              className="h-8 w-8 p-0 hover:bg-muted/50 rounded-lg transition-all"
             >
               <RotateCw className="w-3.5 h-3.5" />
             </Button>
@@ -270,10 +268,10 @@ export const Header = ({ viewMode, setViewMode, deviceMode, setDeviceMode, onTog
 
       {/* Actions */}
       <div className="flex items-center gap-2">
-        <Button variant="ghost" size="sm" className="gap-2 glass-button rounded-lg">
+        <Button variant="ghost" size="sm" className="h-8 w-8 p-0 hover:bg-muted/50 rounded-lg transition-all">
           <Github className="w-4 h-4" />
         </Button>
-        <Button variant="ghost" size="sm" className="gap-2 glass-button rounded-lg">
+        <Button variant="ghost" size="sm" className="h-8 w-8 p-0 hover:bg-muted/50 rounded-lg transition-all">
           <Share2 className="w-4 h-4" />
         </Button>
         <Button size="sm" className="gap-2 bg-gradient-to-r from-accent to-purple hover:opacity-90 text-accent-foreground shadow-lg shadow-accent/20 rounded-lg font-medium">
